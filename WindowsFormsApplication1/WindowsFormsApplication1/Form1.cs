@@ -93,7 +93,16 @@ namespace WindowsFormsApplication1
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = saveFileDialog1.FileName;
-            System.IO.File.WriteAllText(filename, nazvanieTextBox.Text);
+            System.IO.File.WriteAllText(filename, "");
+            System.IO.File.AppendAllText(filename, "#include \"TXLib.h\"" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "int main()" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "{" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, Environment.NewLine);
+            //тут будет мультфильм
+            System.IO.File.AppendAllText(filename, "return 0;" + Environment.NewLine);
+
+            System.IO.File.AppendAllText(filename, "}" + Environment.NewLine);
             MessageBox.Show("Файл сохранен");
         }
 
@@ -107,6 +116,9 @@ namespace WindowsFormsApplication1
             MessageBox.Show("Файл открыт");
         }
 
-        
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
