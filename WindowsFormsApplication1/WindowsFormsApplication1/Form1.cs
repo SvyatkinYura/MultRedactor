@@ -98,7 +98,17 @@ namespace WindowsFormsApplication1
             System.IO.File.AppendAllText(filename, Environment.NewLine);
             System.IO.File.AppendAllText(filename, "int main()" + Environment.NewLine);
             System.IO.File.AppendAllText(filename, "{" + Environment.NewLine);
+            txCreateWindow(800, 600);
+
+
+
             System.IO.File.AppendAllText(filename, Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txSetColor(TX_WHITE);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txSetFillColor(TX_WHITE);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txRectangle(0, 0, 800, 600);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "HDC texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
+
+
             //тут будет мультфильм
             System.IO.File.AppendAllText(filename, "return 0;" + Environment.NewLine);
 
