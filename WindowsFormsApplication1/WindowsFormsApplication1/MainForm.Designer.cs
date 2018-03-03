@@ -121,7 +121,7 @@
             // 
             this.PictureBoxBackground.Location = new System.Drawing.Point(17, 160);
             this.PictureBoxBackground.Name = "PictureBoxBackground";
-            this.PictureBoxBackground.Size = new System.Drawing.Size(100, 50);
+            this.PictureBoxBackground.Size = new System.Drawing.Size(177, 88);
             this.PictureBoxBackground.TabIndex = 12;
             this.PictureBoxBackground.TabStop = false;
             // 
@@ -173,7 +173,7 @@
             this.SaveCharButton.TabIndex = 3;
             this.SaveCharButton.Text = "Сохранить персонажа";
             this.SaveCharButton.UseVisualStyleBackColor = true;
-            this.SaveCharButton.Click += new System.EventHandler(this.saveCharButtonClick);
+            this.SaveCharButton.Click += new System.EventHandler(this.SaveCharButtonClick);
             // 
             // panel3
             // 
@@ -218,7 +218,7 @@
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(221, 160);
+            this.OpenButton.Location = new System.Drawing.Point(225, 153);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(171, 30);
             this.OpenButton.TabIndex = 14;
@@ -305,6 +305,7 @@
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
+            this.TextBoxWall2.TextChanged += new System.EventHandler(this.TextBoxWall2_TextChanged);
             // 
             // TextBoxWall1
             // 
