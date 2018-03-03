@@ -1,18 +1,47 @@
 
 #include "TXLib.h"
 
+struct Person
+{
+    double x;
+    double y;
+    double angle;
+    double nomer_kadra;
+    HDC texture;
+    int MID_x;
+    int MID_y;
+    int rad;
+    int skorost;
+    int gr_dvigx;
+    int gr_dvigy;
+    int nach_dv;
+    int ampl_y;
+    int ampl_x;
+    double BeginTime;
+    double EndTime;
+    double Time;
+};
+
+Person per;
+
+
+
 int main()
 {
     txCreateWindow(800, 600);
 
-    HDC texture = txLoadImage("Personaj.bmp");
+    per.texture = txLoadImage("Pictures\\Personaj.bmp");
 
-    double textureX = 50;
-    double textureY = 50;
-    double angle = 0;
-    double BeginTime = 3;
-    double EndTime = 10;
-    double Time = 0;
+    per.x = 50;
+    per.y = 50;
+    per.angle = 0;
+    per.BeginTime = 3;
+    per.EndTime = 10;
+    per.Time = 0;
+    per.MID_x = 500;
+    per.MID_y = 300;
+    per.rad = 200;
+    per.skorost = 10;
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -21,25 +50,25 @@ int main()
         txSetFillColor(TX_RED);
         txRectangle(0, 0, txGetExtentX(), txGetExtentY());
 
-        if ((Time >= BeginTime) && (Time <= EndTime))
+        if ((per.Time >= per.BeginTime) && (per.Time <= per.EndTime))
         {
-            angle++;
-            textureX = 500 + 200 * cos (angle / 10);
-            textureY = 300 + 200 * sin (angle / 10);
+            per.angle++;
+            per.x = per.MID_x + per.rad * cos (per.angle / per.skorost);
+            per.y = per.MID_y + per.rad * sin (per.angle / per.skorost);
 
-            txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 0, 0, RGB(0, 255, 255));
+            txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 0, 0, RGB(0, 255, 255));
         }
 
         txSleep(100);
-        Time = Time + 0.1;
+        per.Time = per.Time + 0.1;
 
         char str[100];
-        sprintf(str, "%f", Time);
+        sprintf(str, "%f", per.Time);
         txTextOut(100, 100, str);
         txEnd();
     }
 
-    txDeleteDC(texture);
+    txDeleteDC(per.texture);
 
     return 0;
 }
