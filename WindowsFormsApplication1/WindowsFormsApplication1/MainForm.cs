@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +32,6 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             /*int i=0;
-
             for (; i < 10; i++)
                 {
                    PictureBox pic2 = new PictureBox();
@@ -75,9 +74,9 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Список всех файлов папки
-            //Создаешь из них массив (или список)
-            //Выбираешь рандомный номер
+            //Ñïèñîê âñåõ ôàéëîâ ïàïêè
+            //Ñîçäàåøü èç íèõ ìàññèâ (èëè ñïèñîê)
+            //Âûáèðàåøü ðàíäîìíûé íîìåð
 
             //pictureBox1.Image = Image.FromFile("kartinka.jpg");
         }
@@ -143,7 +142,7 @@ namespace WindowsFormsApplication1
             {
                 string filename = saveFileDialog1.FileName;
 
-                //filename.Replace("Вася", "Лох")
+                //filename.Replace("Âàñÿ ÍÅ", "Ëîõ")
                 file_beginning(filename);
                 sinus_create_person(filename);
                 open_while(filename);
@@ -160,14 +159,12 @@ namespace WindowsFormsApplication1
                 }
                 File.Copy("kartinka.jpg", adres_papki + "\\Personaj.bmp", true);
 
-                MessageBox.Show("Файл сохранен");
+                MessageBox.Show("Ôàéë ñîõðàíåí");
             }
         }
 
         private void sinus_create_person(string filename)
         {
-
-
             File.AppendAllText(filename, "    Person per;" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
             File.AppendAllText(filename, "    per.texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
@@ -187,23 +184,22 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        txSetFillColor(TX_RED);" + Environment.NewLine);
             File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());" + Environment.NewLine);
         }
+
         private void sinus3(string filename)
         {
-
-            File.AppendAllText(filename, "txRectangle(0, 0, txGetExtentX(), txGetExtentY());" + Environment.NewLine);
-            File.AppendAllText(filename, "per.x++;" + Environment.NewLine);
-            File.AppendAllText(filename, " per.y = per.nach_dv + per.ampl_y * sin(per.x / per.ampl_x);" + Environment.NewLine);
-            File.AppendAllText(filename, " txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
-            File.AppendAllText(filename, "   per.nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, "if (per.nomer_kadra > 2)" + Environment.NewLine);
-            File.AppendAllText(filename, "{" + Environment.NewLine);
-            File.AppendAllText(filename, "  per.nomer_kadra = 0;" + Environment.NewLine);
-            File.AppendAllText(filename, "}" + Environment.NewLine);     
-           
+            File.AppendAllText(filename, "        per.x++;" + Environment.NewLine);
+            File.AppendAllText(filename, "        per.y = per.nach_dv + per.ampl_y * sin(per.x / per.ampl_x);" + Environment.NewLine);
+            File.AppendAllText(filename, "        txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
+            File.AppendAllText(filename,                                                                Environment.NewLine); 
+            File.AppendAllText(filename, "        per.nomer_kadra++;" + Environment.NewLine);
+            File.AppendAllText(filename, "        if (per.nomer_kadra > 2)" + Environment.NewLine);
+            File.AppendAllText(filename, "        {" + Environment.NewLine);
+            File.AppendAllText(filename, "            per.nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, "        }" + Environment.NewLine);           
         }
+        
         private void sinus4(string filename)
         {
-
             File.AppendAllText(filename, "        txSleep(10);" + Environment.NewLine);
             File.AppendAllText(filename, "    }" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
@@ -212,42 +208,41 @@ namespace WindowsFormsApplication1
 
         private void circle(string filename)
         {
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "txCreateWindow(800, 600)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" + Environment.NewLine);
-
-           File.AppendAllText(filename, "double textureX = 50"+ Environment.NewLine);
-           File.AppendAllText(filename, "double textureY = 50"+ Environment.NewLine);
-           File.AppendAllText(filename, "double angle = 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "double nomer_kadra = 0"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "while (!GetAsyncKeyState(VK_ESCAPE))"+ Environment.NewLine);
-           File.AppendAllText(filename, "{"+ Environment.NewLine);
-           File.AppendAllText(filename, "txSetColor(TX_RED)"+ Environment.NewLine);
-           File.AppendAllText(filename, "txSetFillColor(TX_RED)"+ Environment.NewLine);
-           File.AppendAllText(filename, "txRectangle(0, 0, txGetExtentX(), txGetExtentY())"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "angle++"+ Environment.NewLine);
-           File.AppendAllText(filename, "textureX = 500 + 200 * cos (angle / 10)"+ Environment.NewLine);
-           File.AppendAllText(filename, "textureY = 300 + 200 * sin (angle / 10)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255))"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "nomer_kadra++"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "if (nomer_kadra > 2)"+ Environment.NewLine);
-           File.AppendAllText(filename, "{"+ Environment.NewLine);
-           File.AppendAllText(filename, "nomer_kadra = 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txSleep(10)"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txDeleteDC(texture)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "return 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "txCreateWindow(800, 600);"+                                   Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
+           File.AppendAllText(filename, "    double textureY = 50;"+                                   Environment.NewLine);
+           File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
+           File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))"+                    Environment.NewLine);
+           File.AppendAllText(filename, "    {"+                                                       Environment.NewLine);
+           File.AppendAllText(filename, "        txSetColor(TX_RED);"+                                 Environment.NewLine);
+           File.AppendAllText(filename, "        txSetFillColor(TX_RED);"+                             Environment.NewLine);
+           File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());"+  Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        angle++;"+                                            Environment.NewLine);
+           File.AppendAllText(filename, "        textureX = 500 + 200 * cos (angle / 10);"+            Environment.NewLine);
+           File.AppendAllText(filename, "        textureY = 300 + 200 * sin (angle / 10);"+            Environment.NewLine);
+           File.AppendAllText(filename, "        txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255));"+ Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        nomer_kadra++;"+                                      Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        if (nomer_kadra > 2)"+                                Environment.NewLine);
+           File.AppendAllText(filename, "          {"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
+           File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine); 
+           File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
+           File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "txDeleteDC(texture);"+                                        Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "return 0;"+                                                   Environment.NewLine);
+           File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
         }
 
 
@@ -258,7 +253,7 @@ namespace WindowsFormsApplication1
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            MessageBox.Show("Файл открыт");
+            MessageBox.Show("Ôàéë îòêðûò");
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -288,7 +283,7 @@ namespace WindowsFormsApplication1
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            //MessageBox.Show("Файл открыт");
+            //MessageBox.Show("Ôàéë îòêðûò");
             PictureBoxBackground.Image = Image.FromFile("kartinka.jpg");
         }
 
@@ -298,6 +293,21 @@ namespace WindowsFormsApplication1
         }
 
         private void TextBoxWall2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
