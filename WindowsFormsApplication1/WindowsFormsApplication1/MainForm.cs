@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +32,6 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             /*int i=0;
-
             for (; i < 10; i++)
                 {
                    PictureBox pic2 = new PictureBox();
@@ -75,9 +74,9 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð²ÑÐµÑ… Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð¿Ð°Ð¿ÐºÐ¸
-            //Ð¡Ð¾Ð·Ð´Ð°ÐµÑˆÑŒ Ð¸Ð· Ð½Ð¸Ñ… Ð¼Ð°ÑÑÐ¸Ð² (Ð¸Ð»Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº)
-            //Ð’Ñ‹Ð±Ð¸Ñ€Ð°ÐµÑˆÑŒ Ñ€Ð°Ð½Ð´Ð¾Ð¼Ð½Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€
+            //Ñïèñîê âñåõ ôàéëîâ ïàïêè
+            //Ñîçäàåøü èç íèõ ìàññèâ (èëè ñïèñîê)
+            //Âûáèðàåøü ðàíäîìíûé íîìåð
 
             //pictureBox1.Image = Image.FromFile("kartinka.jpg");
         }
@@ -118,7 +117,7 @@ namespace WindowsFormsApplication1
             {
                 string filename = saveFileDialog1.FileName;
 
-                //filename.Replace("Ð’Ð°ÑÑ", "Ð›Ð¾Ñ…")
+                //filename.Replace("Âàñÿ ÍÅ", "Ëîõ")
                 file_beginning(filename);
                 //file_forser(filename);
                 sinus(filename);
@@ -132,77 +131,76 @@ namespace WindowsFormsApplication1
                 }
                 File.Copy("kartinka.jpg", adres_papki + "\\Personaj.bmp", true);
 
-                MessageBox.Show("Ð¤Ð°Ð¹Ð» ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½");
+                MessageBox.Show("Ôàéë ñîõðàíåí");
             }
         }
 
         private void sinus(string filename)
         {
-           File.AppendAllText(filename, Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
            File.AppendAllText(filename, "    HDC texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
-           File.AppendAllText(filename, "    double textureX = 50;" + Environment.NewLine);
-           File.AppendAllText(filename, "    double textureY = 50;" + Environment.NewLine);
-           File.AppendAllText(filename, "    double nomer_kadra = 0;" + Environment.NewLine);
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE));" + Environment.NewLine);
-           File.AppendAllText(filename, "    {" + Environment.NewLine);
-           File.AppendAllText(filename, "        txSetColor(TX_RED);" + Environment.NewLine);
-           File.AppendAllText(filename, "        txSetFillColor(TX_RED);" + Environment.NewLine);
+           File.AppendAllText(filename, "    double textureX = 50;" +                                  Environment.NewLine);
+           File.AppendAllText(filename, "    double textureY = 50;" +                                  Environment.NewLine);
+           File.AppendAllText(filename, "    double nomer_kadra = 0;" +                                Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))" +                   Environment.NewLine);
+           File.AppendAllText(filename, "    {" +                                                      Environment.NewLine);
+           File.AppendAllText(filename, "        txSetColor(TX_RED);" +                                Environment.NewLine);
+           File.AppendAllText(filename, "        txSetFillColor(TX_RED);" +                            Environment.NewLine);
            File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());" + Environment.NewLine);
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "        textureX++;" + Environment.NewLine);
-           File.AppendAllText(filename, "        textureY = 300 + 150 * sin(textureX / 10);" + Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine); 
+           File.AppendAllText(filename, "        textureX++;" +                                        Environment.NewLine);
+           File.AppendAllText(filename, "        textureY = 300 + 150 * sin(textureX / 10);" +         Environment.NewLine);
            File.AppendAllText(filename, "        txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "        nomer_kadra++;" + Environment.NewLine);
-           File.AppendAllText(filename, "        if (nomer_kadra > 2)" + Environment.NewLine);
-           File.AppendAllText(filename, "        {" + Environment.NewLine);
-           File.AppendAllText(filename, "            nomer_kadra = 0;" + Environment.NewLine);
-           File.AppendAllText(filename, "        }" + Environment.NewLine);
-           File.AppendAllText(filename, "        txSleep(10);" + Environment.NewLine);
-           File.AppendAllText(filename, "    }" + Environment.NewLine);
-           File.AppendAllText(filename, "}" + Environment.NewLine);
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "txDeleteDC(texture);" + Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        nomer_kadra++;" +                                     Environment.NewLine);
+           File.AppendAllText(filename, "        if (nomer_kadra > 2)" +                               Environment.NewLine);
+           File.AppendAllText(filename, "        {" +                                                  Environment.NewLine);
+           File.AppendAllText(filename, "            nomer_kadra = 0;" +                               Environment.NewLine);
+           File.AppendAllText(filename, "        }" +                                                  Environment.NewLine);
+           File.AppendAllText(filename, "        txSleep(10);" +                                       Environment.NewLine);
+           File.AppendAllText(filename, "    }" +                                                      Environment.NewLine);
+           File.AppendAllText(filename, "}" +                                                          Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "txDeleteDC(texture);" +                                       Environment.NewLine);
         }
         private void circle(string filename)
         {
-           File.AppendAllText(filename, Environment.NewLine);
-           File.AppendAllText(filename, "txCreateWindow(800, 600)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" + Environment.NewLine);
-
-           File.AppendAllText(filename, "double textureX = 50"+ Environment.NewLine);
-           File.AppendAllText(filename, "double textureY = 50"+ Environment.NewLine);
-           File.AppendAllText(filename, "double angle = 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "double nomer_kadra = 0"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "while (!GetAsyncKeyState(VK_ESCAPE))"+ Environment.NewLine);
-           File.AppendAllText(filename, "{"+ Environment.NewLine);
-           File.AppendAllText(filename, "txSetColor(TX_RED)"+ Environment.NewLine);
-           File.AppendAllText(filename, "txSetFillColor(TX_RED)"+ Environment.NewLine);
-           File.AppendAllText(filename, "txRectangle(0, 0, txGetExtentX(), txGetExtentY())"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "angle++"+ Environment.NewLine);
-           File.AppendAllText(filename, "textureX = 500 + 200 * cos (angle / 10)"+ Environment.NewLine);
-           File.AppendAllText(filename, "textureY = 300 + 200 * sin (angle / 10)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255))"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "nomer_kadra++"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "if (nomer_kadra > 2)"+ Environment.NewLine);
-           File.AppendAllText(filename, "{"+ Environment.NewLine);
-           File.AppendAllText(filename, "nomer_kadra = 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txSleep(10)"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "txDeleteDC(texture)"+ Environment.NewLine);
-
-           File.AppendAllText(filename, "return 0"+ Environment.NewLine);
-           File.AppendAllText(filename, "}"+ Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "txCreateWindow(800, 600);"+                                   Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
+           File.AppendAllText(filename, "    double textureY = 50;"+                                   Environment.NewLine);
+           File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
+           File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))"+                    Environment.NewLine);
+           File.AppendAllText(filename, "    {"+                                                       Environment.NewLine);
+           File.AppendAllText(filename, "        txSetColor(TX_RED);"+                                 Environment.NewLine);
+           File.AppendAllText(filename, "        txSetFillColor(TX_RED);"+                             Environment.NewLine);
+           File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());"+  Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        angle++;"+                                            Environment.NewLine);
+           File.AppendAllText(filename, "        textureX = 500 + 200 * cos (angle / 10);"+            Environment.NewLine);
+           File.AppendAllText(filename, "        textureY = 300 + 200 * sin (angle / 10);"+            Environment.NewLine);
+           File.AppendAllText(filename, "        txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255));"+ Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        nomer_kadra++;"+                                      Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        if (nomer_kadra > 2)"+                                Environment.NewLine);
+           File.AppendAllText(filename, "          {"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
+           File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine); 
+           File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
+           File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "txDeleteDC(texture);"+                                        Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "return 0;"+                                                   Environment.NewLine);
+           File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
         }
 
 
@@ -213,7 +211,7 @@ namespace WindowsFormsApplication1
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            MessageBox.Show("Ð¤Ð°Ð¹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚");
+            MessageBox.Show("Ôàéë îòêðûò");
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -243,7 +241,7 @@ namespace WindowsFormsApplication1
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            //MessageBox.Show("Ð¤Ð°Ð¹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚");
+            //MessageBox.Show("Ôàéë îòêðûò");
             PictureBoxBackground.Image = Image.FromFile("kartinka.jpg");
         }
 
