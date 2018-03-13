@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
 
     public partial class MainForm : Form
     {
+        public TextBox[] b1 = new TextBox[100];
 
         PictureBox[] pic1 = new PictureBox[1000];
 
@@ -309,6 +310,17 @@ namespace WindowsFormsApplication1
 
         private void label7_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            b1[0] = new TextBox();
+            b1[0].Top = 10;
+            b1[0].Left = 30;
+            b1[0].Width = 200;
+            b1[0].Visible = true;
+            this.Controls.Add(b1[0]);
 
         }
     }
