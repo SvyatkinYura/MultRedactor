@@ -282,7 +282,7 @@ namespace WindowsFormsApplication1
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = openFileDialog1.FileName;
-            string fileText =File.ReadAllText(filename);
+            string fileText = File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
             //MessageBox.Show("Ôàéë îòêðûò");
             PictureBoxBackground.Image = Image.FromFile("kartinka.jpg");
@@ -320,8 +320,7 @@ namespace WindowsFormsApplication1
             b1[0].Left = 30;
             b1[0].Width = 200;
             b1[0].Visible = true;
-            this.Controls.Add(b1[0]);
-
+            this.panel1.Controls.Add(b1[0]);
         }
     }
 }
