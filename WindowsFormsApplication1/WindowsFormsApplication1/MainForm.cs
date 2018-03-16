@@ -206,10 +206,10 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "    Person per;" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
             File.AppendAllText(filename, "    per.texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.x = 50;" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.y = 50;"+ Environment.NewLine);
+            File.AppendAllText(filename, "    per.x = " + TextBoxWall1.Text + ";" + Environment.NewLine);
+            File.AppendAllText(filename, "    per.y = " + TextBoxWall1.Text + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    per.nomer_kadra = 0;" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.nach_dv = 300;" + Environment.NewLine);
+            File.AppendAllText(filename, "    per.nach_dv = per.y;" + Environment.NewLine);
             File.AppendAllText(filename, "    per.ampl_y = 150;" + Environment.NewLine);
             File.AppendAllText(filename, "    per.ampl_x = 10;" + Environment.NewLine); 
         }
@@ -221,7 +221,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
             File.AppendAllText(filename,                                                                Environment.NewLine); 
             File.AppendAllText(filename, "        per.nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, "        if (per.nomer_kadra > 2)" + Environment.NewLine);
+            File.AppendAllText(filename, "        if (per.nomer_kadra > " + SpriteNumberTextBox.Text + ")" + Environment.NewLine);
             File.AppendAllText(filename, "        {" + Environment.NewLine);
             File.AppendAllText(filename, "            per.nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);           
@@ -342,6 +342,11 @@ namespace WindowsFormsApplication1
             b1[0].Width = 200;
             b1[0].Visible = true;
             this.panel1.Controls.Add(b1[0]);
+        }
+
+        private void TextBoxWall1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
