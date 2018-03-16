@@ -166,7 +166,17 @@ namespace WindowsFormsApplication1
                 //main.cpp
                 create_struct(filename);
 
-                if (ComboBoxMove.Text == "Волнами")
+                if (ComboBoxMove.Text == "Прямо")
+                {
+                    sinus_create_person(filename);
+                    old_place (filename);
+                    open_while(filename);
+                    go_pryamo(filename);
+                    close_while(filename);
+                    delete_pics(filename);
+                }
+
+                else if (ComboBoxMove.Text == "Волнами")
                 {
                     sinus_create_person(filename);
                     open_while(filename);
@@ -176,7 +186,11 @@ namespace WindowsFormsApplication1
                 }
                 else if (ComboBoxMove.Text == "Кругами")
                 {
+                    circle_create_person(filename);
+                    open_while(filename);
                     circle(filename);
+                    close_while(filename);
+                    delete_pics(filename);
                 }
 
                 file_ending(filename);
@@ -220,11 +234,8 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        }" + Environment.NewLine);           
         }
 
-        private void circle(string filename)
-        {
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "txCreateWindow(800, 600);"+                                   Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
+        private void circle_create_person(string filename)
+        { 
            File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
            File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
@@ -232,12 +243,35 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
            File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))"+                    Environment.NewLine);
-           File.AppendAllText(filename, "    {"+                                                       Environment.NewLine);
-           File.AppendAllText(filename, "        txSetColor(TX_RED);"+                                 Environment.NewLine);
-           File.AppendAllText(filename, "        txSetFillColor(TX_RED);"+                             Environment.NewLine);
-           File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());"+  Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
+        }
+
+
+        private void old_place(string filename)
+        {
+            File.AppendAllText(filename, "  per.x = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.y = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.nomer_kadra = 0; " + Environment.NewLine);
+            File.AppendAllText(filename, " per.gr_dvigx = 1000; " + Environment.NewLine);
+        }
+        private void go_pryamo(string filename)
+        {
+
+            File.AppendAllText(filename, "txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.x++; " + Environment.NewLine);
+            File.AppendAllText(filename, " per.nomer_kadra++;" + Environment.NewLine);
+            File.AppendAllText(filename, " if (per.nomer_kadra > 2) " + Environment.NewLine);
+            File.AppendAllText(filename, " { " + Environment.NewLine);
+            File.AppendAllText(filename, " per.nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, " }" + Environment.NewLine);
+            File.AppendAllText(filename, " " + Environment.NewLine);
+            File.AppendAllText(filename, "  }" + Environment.NewLine);
+        }
+
+
+
+        private void circle(string filename)
+        {
+
            File.AppendAllText(filename, "        angle++;"+                                            Environment.NewLine);
            File.AppendAllText(filename, "        textureX = 500 + 200 * cos (angle / 10);"+            Environment.NewLine);
            File.AppendAllText(filename, "        textureY = 300 + 200 * sin (angle / 10);"+            Environment.NewLine);
@@ -250,13 +284,8 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
            File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine); 
-           File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
-           File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    txDeleteDC(texture);"+                                    Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    return 0;"+                                               Environment.NewLine);
-           File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
+
+
         }
 
 
