@@ -26,8 +26,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             
-            openFileDialog1.Filter = "Text files(*OpenFileDialog.txt)|*.txt|All files(*.*)|*.*";
-            saveFileDialog1.Filter = "Text files(*SaveFileDialog.txt)|*.txt|All files(*.*)|*.*";
+            openFileDialog1.Filter = "Kartinki|*.bmp";
+            saveFileDialog1.Filter = "cpp files|*.cpp";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -115,7 +115,9 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename,                                   Environment.NewLine);
             File.AppendAllText(filename, "int main()" +                    Environment.NewLine);
             File.AppendAllText(filename, "{" +                             Environment.NewLine);
-            File.AppendAllText(filename, "    txCreateWindow(800, 600);" + Environment.NewLine);
+            File.AppendAllText(filename, "    txCreateWindow(" + 
+                PictureBoxBackground.Image.Width.ToString() + ", " +
+                PictureBoxBackground.Image.Height.ToString() + ");" + Environment.NewLine);
         }
         
         private void open_while(string filename)
@@ -159,6 +161,11 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
+            if (PictureBoxBackground.Image == null)
+            {
+                return;
+            }
+
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {   
                 string filename = saveFileDialog1.FileName;
