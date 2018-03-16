@@ -18,7 +18,14 @@ namespace WindowsFormsApplication1
 
     public partial class MainForm : Form
     {
-        public TextBox[] b1 = new TextBox[100];
+        int yPersa = 300;
+        int nomerPersa = 0;
+
+        public Label[] l1 = new Label[100];
+        public Label[] l2 = new Label[100];
+        public Label[] l3 = new Label[100];
+        public Button[] b1 = new Button[100];
+        public Button[] b2 = new Button[100];
 
         PictureBox[] pic1 = new PictureBox[1000];
 
@@ -117,7 +124,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "{" +                             Environment.NewLine);
             File.AppendAllText(filename, "    txCreateWindow(" + 
                 PictureBoxBackground.Image.Width.ToString() + ", " +
-                PictureBoxBackground.Image.Height.ToString() + ");" + Environment.NewLine);
+                PictureBoxBackground.Image.Height.ToString() + ");" +      Environment.NewLine);
         }
         
         private void open_while(string filename)
@@ -140,7 +147,7 @@ namespace WindowsFormsApplication1
         private void delete_pics(string filename)
         {
             File.AppendAllText(filename,                                                                Environment.NewLine);
-            File.AppendAllText(filename, "txDeleteDC(per.texture);" +                                   Environment.NewLine);
+            File.AppendAllText(filename, "    txDeleteDC(per.texture);" +                               Environment.NewLine);
         }
 
         private void file_forser(string filename)
@@ -182,7 +189,6 @@ namespace WindowsFormsApplication1
                     close_while(filename);
                     delete_pics(filename);
                 }
-
                 else if (ComboBoxMove.Text == "Волнами")
                 {
                     sinus_create_person(filename);
@@ -365,12 +371,51 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            b1[0] = new TextBox();
-            b1[0].Top = 10;
-            b1[0].Left = 30;
-            b1[0].Width = 200;
+            l1[0] = new Label();
+            l1[0].Top = yPersa;
+            l1[0].Left = 30;
+            l1[0].Width = 20;
+            l1[0].Visible = true;
+            l1[0].Text = "1";
+            this.panel1.Controls.Add(l1[0]);
+
+            l2[0] = new Label();
+            l2[0].Top = yPersa;
+            l2[0].Left = 60;
+            l2[0].Width = 60;
+            l2[0].Visible = true;
+            l2[0].Text = "Перс1";
+            this.panel1.Controls.Add(l2[0]);
+
+            l3[0] = new Label();
+            l3[0].Top = yPersa;
+            l3[0].Left = 120;
+            l3[0].Width = 40;
+            l3[0].Visible = true;
+            l3[0].Text = "ocphcghfgh";
+            this.panel1.Controls.Add(l3[0]);
+
+            b1[0] = new Button();
+            b1[0].Top = yPersa;
+            b1[0].Left = 170;
+            b1[0].Width = 50;
             b1[0].Visible = true;
+            b1[0].Text = "R";
             this.panel1.Controls.Add(b1[0]);
+
+            b2[0] = new Button();
+            b2[0].Top = yPersa;
+            b2[0].Left = 230;
+            b2[0].Width = 50;
+            b2[0].Visible = true;
+            b2[0].Text = "X";
+            this.panel1.Controls.Add(b2[0]);
+
+            yPersa = yPersa + 30;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
         }
 
         private void TextBoxWall1_TextChanged(object sender, EventArgs e)
