@@ -152,7 +152,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 380);
+            this.panel1.Size = new System.Drawing.Size(282, 527);
             this.panel1.TabIndex = 4;
             // 
             // label13
@@ -364,7 +364,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(282, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 380);
+            this.splitter1.Size = new System.Drawing.Size(3, 527);
             this.splitter1.TabIndex = 5;
             this.splitter1.TabStop = false;
             // 
@@ -377,13 +377,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(285, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(392, 380);
+            this.panel2.Size = new System.Drawing.Size(392, 527);
             this.panel2.TabIndex = 6;
             // 
             // SaveCharButton
             // 
             this.SaveCharButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveCharButton.Location = new System.Drawing.Point(0, 320);
+            this.SaveCharButton.Location = new System.Drawing.Point(0, 467);
             this.SaveCharButton.Name = "SaveCharButton";
             this.SaveCharButton.Size = new System.Drawing.Size(392, 30);
             this.SaveCharButton.TabIndex = 3;
@@ -411,7 +411,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 26);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(392, 324);
+            this.panel3.Size = new System.Drawing.Size(392, 471);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
             // 
@@ -556,7 +556,7 @@
             // SaveMultButton
             // 
             this.SaveMultButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveMultButton.Location = new System.Drawing.Point(0, 350);
+            this.SaveMultButton.Location = new System.Drawing.Point(0, 497);
             this.SaveMultButton.Name = "SaveMultButton";
             this.SaveMultButton.Size = new System.Drawing.Size(392, 30);
             this.SaveMultButton.TabIndex = 1;
@@ -582,7 +582,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 380);
+            this.ClientSize = new System.Drawing.Size(677, 527);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);

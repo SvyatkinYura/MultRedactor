@@ -18,7 +18,14 @@ namespace WindowsFormsApplication1
 
     public partial class MainForm : Form
     {
-        public TextBox[] b1 = new TextBox[100];
+        int y = 300;
+
+        public Label[] l1 = new Label[100];
+        public Label[] l2 = new Label[100];
+        public Label[] l3 = new Label[100];
+        public Button[] b1 = new Button[100];
+        public Button[] b2 = new Button[100];
+
 
         PictureBox[] pic1 = new PictureBox[1000];
 
@@ -329,12 +336,51 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            b1[0] = new TextBox();
-            b1[0].Top = 10;
-            b1[0].Left = 30;
-            b1[0].Width = 200;
+            l1[0] = new Label();
+            l1[0].Top = y;
+            l1[0].Left = 30;
+            l1[0].Width = 50;
+            l1[0].Visible = true;
+            l1[0].Text = "gfhcghfgh";
+            this.panel1.Controls.Add(l1[0]);
+
+
+            l2[0] = new Label();
+            l2[0].Top = y;
+            l2[0].Left = 100;
+            l2[0].Width = 60;
+            l2[0].Visible = true;
+            l2[0].Text = "ocphcghfgh";
+            this.panel1.Controls.Add(l2[0]);
+
+
+            l3[0] = new Label();
+            l3[0].Top = y;
+            l3[0].Left = 170;
+            l3[0].Width = 40;
+            l3[0].Visible = true;
+            l3[0].Text = "ocphcghfgh";
+            this.panel1.Controls.Add(l3[0]);
+
+            b1[0] = new Button();
+            b1[0].Top = y;
+            b1[0].Left = 220;
+            b1[0].Width = 50;
             b1[0].Visible = true;
             this.panel1.Controls.Add(b1[0]);
+
+
+            b2[0] = new Button();
+            b2[0].Top = y;
+            b2[0].Left = 280;
+            b2[0].Width = 50;
+            b2[0].Visible = true;
+            this.panel1.Controls.Add(b2[0]);
+
+            y = y + 30;
         }
-    }
+        private void button3_Click(object sender, EventArgs e)
+        {
+        }
+}
 }
