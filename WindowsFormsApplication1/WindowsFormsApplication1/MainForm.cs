@@ -18,7 +18,8 @@ namespace WindowsFormsApplication1
 
     public partial class MainForm : Form
     {
-        int y = 300;
+        int yPersa = 300;
+        int nomerPersa = 0;
 
         public Label[] l1 = new Label[100];
         public Label[] l2 = new Label[100];
@@ -26,15 +27,14 @@ namespace WindowsFormsApplication1
         public Button[] b1 = new Button[100];
         public Button[] b2 = new Button[100];
 
-
         PictureBox[] pic1 = new PictureBox[1000];
 
         public MainForm()
         {
             InitializeComponent();
             
-            openFileDialog1.Filter = "Text files(*OpenFileDialog.txt)|*.txt|All files(*.*)|*.*";
-            saveFileDialog1.Filter = "Text files(*SaveFileDialog.txt)|*.txt|All files(*.*)|*.*";
+            openFileDialog1.Filter = "Kartinki|*.bmp";
+            saveFileDialog1.Filter = "cpp files|*.cpp";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -122,7 +122,9 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename,                                   Environment.NewLine);
             File.AppendAllText(filename, "int main()" +                    Environment.NewLine);
             File.AppendAllText(filename, "{" +                             Environment.NewLine);
-            File.AppendAllText(filename, "    txCreateWindow(800, 600);" + Environment.NewLine);
+            File.AppendAllText(filename, "    txCreateWindow(" + 
+                PictureBoxBackground.Image.Width.ToString() + ", " +
+                PictureBoxBackground.Image.Height.ToString() + ");" +      Environment.NewLine);
         }
         
         private void open_while(string filename)
@@ -145,7 +147,7 @@ namespace WindowsFormsApplication1
         private void delete_pics(string filename)
         {
             File.AppendAllText(filename,                                                                Environment.NewLine);
-            File.AppendAllText(filename, "txDeleteDC(per.texture);" +                                   Environment.NewLine);
+            File.AppendAllText(filename, "    txDeleteDC(per.texture);" +                               Environment.NewLine);
         }
 
         private void file_forser(string filename)
@@ -166,6 +168,11 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
+            if (PictureBoxBackground.Image == null)
+            {
+                return;
+            }
+
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {   
                 string filename = saveFileDialog1.FileName;
@@ -173,7 +180,16 @@ namespace WindowsFormsApplication1
                 //main.cpp
                 create_struct(filename);
 
-                if (ComboBoxMove.Text == "Волнами")
+                if (ComboBoxMove.Text == "Прямо")
+                {
+                    sinus_create_person(filename);
+                    old_place (filename);
+                    open_while(filename);
+                    go_pryamo(filename);
+                    close_while(filename);
+                    delete_pics(filename);
+                }
+                else if (ComboBoxMove.Text == "Волнами")
                 {
                     sinus_create_person(filename);
                     open_while(filename);
@@ -183,7 +199,11 @@ namespace WindowsFormsApplication1
                 }
                 else if (ComboBoxMove.Text == "Кругами")
                 {
+                    circle_create_person(filename);
+                    open_while(filename);
                     circle(filename);
+                    close_while(filename);
+                    delete_pics(filename);
                 }
 
                 file_ending(filename);
@@ -206,10 +226,10 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "    Person per;" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
             File.AppendAllText(filename, "    per.texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.x = 50;" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.y = 50;"+ Environment.NewLine);
+            File.AppendAllText(filename, "    per.x = " + TextBoxWall1.Text + ";" + Environment.NewLine);
+            File.AppendAllText(filename, "    per.y = " + TextBoxWall1.Text + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    per.nomer_kadra = 0;" + Environment.NewLine);
-            File.AppendAllText(filename, "    per.nach_dv = 300;" + Environment.NewLine);
+            File.AppendAllText(filename, "    per.nach_dv = per.y;" + Environment.NewLine);
             File.AppendAllText(filename, "    per.ampl_y = 150;" + Environment.NewLine);
             File.AppendAllText(filename, "    per.ampl_x = 10;" + Environment.NewLine); 
         }
@@ -221,17 +241,14 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
             File.AppendAllText(filename,                                                                Environment.NewLine); 
             File.AppendAllText(filename, "        per.nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, "        if (per.nomer_kadra > 2)" + Environment.NewLine);
+            File.AppendAllText(filename, "        if (per.nomer_kadra > " + SpriteNumberTextBox.Text + ")" + Environment.NewLine);
             File.AppendAllText(filename, "        {" + Environment.NewLine);
             File.AppendAllText(filename, "            per.nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);           
         }
 
-        private void circle(string filename)
-        {
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "txCreateWindow(800, 600);"+                                   Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
+        private void circle_create_person(string filename)
+        { 
            File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
            File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
@@ -239,12 +256,35 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
            File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))"+                    Environment.NewLine);
-           File.AppendAllText(filename, "    {"+                                                       Environment.NewLine);
-           File.AppendAllText(filename, "        txSetColor(TX_RED);"+                                 Environment.NewLine);
-           File.AppendAllText(filename, "        txSetFillColor(TX_RED);"+                             Environment.NewLine);
-           File.AppendAllText(filename, "        txRectangle(0, 0, txGetExtentX(), txGetExtentY());"+  Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
+        }
+
+
+        private void old_place(string filename)
+        {
+            File.AppendAllText(filename, "  per.x = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.y = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.nomer_kadra = 0; " + Environment.NewLine);
+            File.AppendAllText(filename, " per.gr_dvigx = 1000; " + Environment.NewLine);
+        }
+        private void go_pryamo(string filename)
+        {
+
+            File.AppendAllText(filename, "txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.x++; " + Environment.NewLine);
+            File.AppendAllText(filename, " per.nomer_kadra++;" + Environment.NewLine);
+            File.AppendAllText(filename, " if (per.nomer_kadra > 2) " + Environment.NewLine);
+            File.AppendAllText(filename, " { " + Environment.NewLine);
+            File.AppendAllText(filename, " per.nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, " }" + Environment.NewLine);
+            File.AppendAllText(filename, " " + Environment.NewLine);
+            File.AppendAllText(filename, "  }" + Environment.NewLine);
+        }
+
+
+
+        private void circle(string filename)
+        {
+
            File.AppendAllText(filename, "        angle++;"+                                            Environment.NewLine);
            File.AppendAllText(filename, "        textureX = 500 + 200 * cos (angle / 10);"+            Environment.NewLine);
            File.AppendAllText(filename, "        textureY = 300 + 200 * sin (angle / 10);"+            Environment.NewLine);
@@ -257,13 +297,8 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
            File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine); 
-           File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
-           File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    txDeleteDC(texture);"+                                    Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    return 0;"+                                               Environment.NewLine);
-           File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
+
+
         }
 
 
@@ -337,50 +372,55 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             l1[0] = new Label();
-            l1[0].Top = y;
+            l1[0].Top = yPersa;
             l1[0].Left = 30;
-            l1[0].Width = 50;
+            l1[0].Width = 20;
             l1[0].Visible = true;
-            l1[0].Text = "gfhcghfgh";
+            l1[0].Text = "1";
             this.panel1.Controls.Add(l1[0]);
 
-
             l2[0] = new Label();
-            l2[0].Top = y;
-            l2[0].Left = 100;
+            l2[0].Top = yPersa;
+            l2[0].Left = 60;
             l2[0].Width = 60;
             l2[0].Visible = true;
-            l2[0].Text = "ocphcghfgh";
+            l2[0].Text = "Перс1";
             this.panel1.Controls.Add(l2[0]);
 
-
             l3[0] = new Label();
-            l3[0].Top = y;
-            l3[0].Left = 170;
+            l3[0].Top = yPersa;
+            l3[0].Left = 120;
             l3[0].Width = 40;
             l3[0].Visible = true;
             l3[0].Text = "ocphcghfgh";
             this.panel1.Controls.Add(l3[0]);
 
             b1[0] = new Button();
-            b1[0].Top = y;
-            b1[0].Left = 220;
+            b1[0].Top = yPersa;
+            b1[0].Left = 170;
             b1[0].Width = 50;
             b1[0].Visible = true;
+            b1[0].Text = "R";
             this.panel1.Controls.Add(b1[0]);
 
-
             b2[0] = new Button();
-            b2[0].Top = y;
-            b2[0].Left = 280;
+            b2[0].Top = yPersa;
+            b2[0].Left = 230;
             b2[0].Width = 50;
             b2[0].Visible = true;
+            b2[0].Text = "X";
             this.panel1.Controls.Add(b2[0]);
 
-            y = y + 30;
+            yPersa = yPersa + 30;
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
         }
-}
+
+        private void TextBoxWall1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

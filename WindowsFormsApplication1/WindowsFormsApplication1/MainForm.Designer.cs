@@ -78,6 +78,7 @@
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -393,6 +394,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
             this.panel3.Controls.Add(this.OpenButton);
@@ -529,6 +531,7 @@
             this.TextBoxWall1.Name = "TextBoxWall1";
             this.TextBoxWall1.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall1.TabIndex = 2;
+            this.TextBoxWall1.TextChanged += new System.EventHandler(this.TextBoxWall1_TextChanged);
             // 
             // ComboBoxMove
             // 
@@ -577,6 +580,14 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(132, 114);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(235, 20);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Text = "Здесь должна быть кнопка амплитуды X Y !!!";
             // 
             // MainForm
             // 
@@ -652,6 +663,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
