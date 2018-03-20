@@ -80,8 +80,25 @@ namespace WindowsFormsApplication1
 
         }
 
+        private string PersonName(int nomer)
+        {
+            return "per" + nomer.ToString();
+        }
+
+        private void delete_pics2(string filename, int nomer)
+        {
+            File.AppendAllText(filename, Environment.NewLine);
+            
+            //Стало
+            for (int n1 = 0; n1 <= 5; n1++)
+            {
+                File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
+            }
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(PersonName(1));
             //Ñïèñîê âñåõ ôàéëîâ ïàïêè
             //Ñîçäàåøü èç íèõ ìàññèâ (èëè ñïèñîê)
             //Âûáèðàåøü ðàíäîìíûé íîìåð
@@ -195,7 +212,7 @@ namespace WindowsFormsApplication1
                     open_while(filename);
                     sinus3(filename);
                     close_while(filename);
-                    delete_pics(filename);                    
+                    delete_pics2(filename, 5);                    
                 }
                 else if (ComboBoxMove.Text == "Кругами")
                 {
