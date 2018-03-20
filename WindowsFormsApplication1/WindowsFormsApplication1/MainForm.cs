@@ -6,26 +6,33 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public struct Personazh
-    {
-        public string ce_nibud;
-        public string nazvanie_personazha;
-    }
-
     public partial class MainForm : Form
     {
-        int yPersa = 300;
-        int nomerPersa = 0;
-
         public Label[] l1 = new Label[100];
         public Label[] l2 = new Label[100];
         public Label[] l3 = new Label[100];
         public Button[] b1 = new Button[100];
         public Button[] b2 = new Button[100];
+
+        public struct Person
+        {
+            public Label l1;
+            public Label l2;
+            public Label l3;
+            public Button b1;
+            public Button b2;
+        };
+
+        Person[] persons = new Person[200];
+
+        int yPersa = 300;
+        int nomerPersa = 0;
+
 
         PictureBox[] pic1 = new PictureBox[1000];
 
@@ -388,46 +395,47 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            l1[0] = new Label();
-            l1[0].Top = yPersa;
-            l1[0].Left = 30;
-            l1[0].Width = 20;
-            l1[0].Visible = true;
-            l1[0].Text = "1";
-            this.panel1.Controls.Add(l1[0]);
+            persons[nomerPersa].l1 = new Label();
+            persons[nomerPersa].l1.Top = yPersa;
+            persons[nomerPersa].l1.Left = 30;
+            persons[nomerPersa].l1.Width = 20;
+            persons[nomerPersa].l1.Visible = true;
+            persons[nomerPersa].l1.Text = "1";
+            this.panel1.Controls.Add(persons[nomerPersa].l1);
 
-            l2[0] = new Label();
-            l2[0].Top = yPersa;
-            l2[0].Left = 60;
-            l2[0].Width = 60;
-            l2[0].Visible = true;
-            l2[0].Text = "Перс1";
-            this.panel1.Controls.Add(l2[0]);
+            persons[nomerPersa].l2 = new Label();
+            persons[nomerPersa].l2.Top = yPersa;
+            persons[nomerPersa].l2.Left = 60;
+            persons[nomerPersa].l2.Width = 60;
+            persons[nomerPersa].l2.Visible = true;
+            persons[nomerPersa].l2.Text = "Перс1";
+            this.panel1.Controls.Add(persons[nomerPersa].l2);
 
-            l3[0] = new Label();
-            l3[0].Top = yPersa;
-            l3[0].Left = 120;
-            l3[0].Width = 40;
-            l3[0].Visible = true;
-            l3[0].Text = "ocphcghfgh";
-            this.panel1.Controls.Add(l3[0]);
+            persons[nomerPersa].l3 = new Label();
+            persons[nomerPersa].l3.Top = yPersa;
+            persons[nomerPersa].l3.Left = 120;
+            persons[nomerPersa].l3.Width = 40;
+            persons[nomerPersa].l3.Visible = true;
+            persons[nomerPersa].l3.Text = "ocphcghfgh";
+            this.panel1.Controls.Add(persons[nomerPersa].l3);
 
-            b1[0] = new Button();
-            b1[0].Top = yPersa;
-            b1[0].Left = 170;
-            b1[0].Width = 50;
-            b1[0].Visible = true;
-            b1[0].Text = "R";
-            this.panel1.Controls.Add(b1[0]);
+            persons[nomerPersa].b1 = new Button();
+            persons[nomerPersa].b1.Top = yPersa;
+            persons[nomerPersa].b1.Left = 170;
+            persons[nomerPersa].b1.Width = 50;
+            persons[nomerPersa].b1.Visible = true;
+            persons[nomerPersa].b1.Text = "R";
+            this.panel1.Controls.Add(persons[nomerPersa].b1);
 
-            b2[0] = new Button();
-            b2[0].Top = yPersa;
-            b2[0].Left = 230;
-            b2[0].Width = 50;
-            b2[0].Visible = true;
-            b2[0].Text = "X";
-            this.panel1.Controls.Add(b2[0]);
+            persons[nomerPersa].b2 = new Button();
+            persons[nomerPersa].b2.Top = yPersa;
+            persons[nomerPersa].b2.Left = 230;
+            persons[nomerPersa].b2.Width = 50;
+            persons[nomerPersa].b2.Visible = true;
+            persons[nomerPersa].b2.Text = "X";
+            this.panel1.Controls.Add(persons[nomerPersa].b2);
 
+            nomerPersa++;
             yPersa = yPersa + 30;
         }
 
