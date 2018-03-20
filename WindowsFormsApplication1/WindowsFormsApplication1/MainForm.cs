@@ -187,7 +187,7 @@ namespace WindowsFormsApplication1
                     open_while(filename);
                     go_pryamo(filename);
                     close_while(filename);
-                    delete_pics(filename);
+                //    delete_pics(filename);
                 }
                 else if (ComboBoxMove.Text == "Волнами")
                 {
@@ -215,7 +215,7 @@ namespace WindowsFormsApplication1
                 {
                     Directory.CreateDirectory(adres_papki);
                 }
-                File.Copy("kartinka.jpg", adres_papki + "\\Personaj.bmp", true);
+                File.Copy("kartinka.bmp", adres_papki + "\\Personaj.bmp", true);
 
                 MessageBox.Show("Complete");
             }
@@ -261,23 +261,21 @@ namespace WindowsFormsApplication1
 
         private void old_place(string filename)
         {
-            File.AppendAllText(filename, "  per.x = 10; " + Environment.NewLine);
-            File.AppendAllText(filename, "   per.y = 10; " + Environment.NewLine);
-            File.AppendAllText(filename, "   per.nomer_kadra = 0; " + Environment.NewLine);
-            File.AppendAllText(filename, " per.gr_dvigx = 1000; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.x = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "    per.y = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "    per.nomer_kadra = 0; " + Environment.NewLine);
+            File.AppendAllText(filename, "   per.gr_dvigx = 1000; " + Environment.NewLine);
         }
         private void go_pryamo(string filename)
         {
 
-            File.AppendAllText(filename, "txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
-            File.AppendAllText(filename, "   per.x++; " + Environment.NewLine);
-            File.AppendAllText(filename, " per.nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, " if (per.nomer_kadra > 2) " + Environment.NewLine);
-            File.AppendAllText(filename, " { " + Environment.NewLine);
-            File.AppendAllText(filename, " per.nomer_kadra = 0;" + Environment.NewLine);
-            File.AppendAllText(filename, " }" + Environment.NewLine);
-            File.AppendAllText(filename, " " + Environment.NewLine);
-            File.AppendAllText(filename, "  }" + Environment.NewLine);
+            File.AppendAllText(filename, "      txTransparentBlt(txDC(), per.x, per.y, 55, 86, per.texture, 55 * per.nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
+            File.AppendAllText(filename, "      per.x++; " + Environment.NewLine);
+            File.AppendAllText(filename, "      per.nomer_kadra++;" + Environment.NewLine);
+            File.AppendAllText(filename, "      if (per.nomer_kadra > 2) " + Environment.NewLine);
+            File.AppendAllText(filename, "      { " + Environment.NewLine);
+            File.AppendAllText(filename, "      per.nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, "      }" + Environment.NewLine);
         }
 
 
@@ -340,7 +338,7 @@ namespace WindowsFormsApplication1
             string fileText = File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
 
-            PictureBoxBackground.Image = Image.FromFile("kartinka.jpg");
+            PictureBoxBackground.Image = Image.FromFile("kartinka.bmp");
             MessageBox.Show(PictureBoxBackground.Image.Width.ToString());
         }
 
