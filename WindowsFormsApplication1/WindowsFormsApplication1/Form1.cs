@@ -15,12 +15,12 @@ namespace WindowsFormsApplication1
         public string nazvanie_personazha;
     }
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        
+
         PictureBox[] pic1 = new PictureBox[1000];
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
                    pic1[i] = pic2;
                    Controls.Add(pic1[i]);
                  }*/
-           }
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -79,8 +79,8 @@ namespace WindowsFormsApplication1
             //Список всех файлов папки
             //Создаешь из них массив (или список)
             //Выбираешь рандомный номер
-            
-            pictureBox1.Image = Image.FromFile("kartinka.jpg");
+
+            //pictureBox1.Image = Image.FromFile("kartinka.jpg");
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -93,7 +93,26 @@ namespace WindowsFormsApplication1
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = saveFileDialog1.FileName;
-            System.IO.File.WriteAllText(filename, nazvanieTextBox.Text);
+            System.IO.File.WriteAllText(filename, "");
+            System.IO.File.AppendAllText(filename, "#include \"TXLib.h\"" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "int main()" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "{" + Environment.NewLine);
+            //txCreateWindow(800, 600);
+
+
+
+            System.IO.File.AppendAllText(filename, Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txSetColor(TX_WHITE);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txSetFillColor(TX_WHITE);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "txRectangle(0, 0, 800, 600);" + Environment.NewLine);
+            System.IO.File.AppendAllText(filename, "HDC texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
+
+
+            //тут будет мультфильм
+            System.IO.File.AppendAllText(filename, "return " + spriteTextBox.Text + "0;" + Environment.NewLine);
+
+            System.IO.File.AppendAllText(filename, "}" + Environment.NewLine);
             MessageBox.Show("Файл сохранен");
         }
 
@@ -107,6 +126,36 @@ namespace WindowsFormsApplication1
             MessageBox.Show("Файл открыт");
         }
 
-        
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = openFileDialog1.FileName;
+            string fileText = System.IO.File.ReadAllText(filename);
+            nazvanieTextBox.Text = fileText;
+            //MessageBox.Show("Файл открыт");
+            pictureBox1.Image = Image.FromFile("kartinka.jpg");
+        }
+
     }
 }
