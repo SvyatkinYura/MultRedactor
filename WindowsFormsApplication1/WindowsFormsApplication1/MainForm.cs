@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -31,9 +30,9 @@ namespace WindowsFormsApplication1
         public MainForm()
         {
             InitializeComponent();
-            
-            openFileDialog1.Filter = "Text files(*OpenFileDialog.txt)|*.txt|All files(*.*)|*.*";
-            saveFileDialog1.Filter = "Text files(*SaveFileDialog.txt)|*.txt|All files(*.*)|*.*";
+
+            openFileDialog1.Filter = "Kartinki|*.bmp";
+            saveFileDialog1.Filter = "cpp files|*.cpp";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -144,13 +143,13 @@ namespace WindowsFormsApplication1
                 Files.Ending(filename);
 
                 //Add TXLib and pics
-                File.Copy("TXLib.h", filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
+                File.Copy(Path.Combine(Application.StartupPath, "TXLib.h"), filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
                 string adres_papki = filename.Replace(Path.GetFileName(filename), "Pictures");
                 if (!Directory.Exists(adres_papki))
                 {
                     Directory.CreateDirectory(adres_papki);
                 }
-                File.Copy("kartinka.bmp", adres_papki + "\\Personaj.bmp", true);
+                File.Copy(Path.Combine(Application.StartupPath, "kartinka.bmp"), adres_papki + "\\Personaj.bmp", true);
 
                 MessageBox.Show("Successfully");
             }
@@ -228,8 +227,7 @@ namespace WindowsFormsApplication1
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            //MessageBox.Show("Ôàéë îòêðûò");
-            PictureBoxBackground.Image = Image.FromFile("kartinka.jpg");
+            PictureBoxBackground.Image = Image.FromFile(Path.Combine(Application.StartupPath, "kartinka.jpg"));
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -308,6 +306,11 @@ namespace WindowsFormsApplication1
         }
 
         private void TextBoxWall1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

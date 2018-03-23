@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Text;
 
@@ -36,7 +35,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename,                                   Environment.NewLine);
         }
 
-        private void OpenWhile(string filename)
+        public static void OpenWhile(string filename)
         {
             File.AppendAllText(filename, Environment.NewLine);
             File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE));" + Environment.NewLine);
