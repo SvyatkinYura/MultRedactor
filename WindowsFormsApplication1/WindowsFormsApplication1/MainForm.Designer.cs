@@ -62,7 +62,6 @@
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
             this.OpenButton = new System.Windows.Forms.Button();
-            this.AddPictureButton = new System.Windows.Forms.Button();
             this.LabelPic = new System.Windows.Forms.Label();
             this.LabelTime = new System.Windows.Forms.Label();
             this.LabelDef2 = new System.Windows.Forms.Label();
@@ -93,7 +92,6 @@
             this.LabelData.Size = new System.Drawing.Size(224, 23);
             this.LabelData.TabIndex = 0;
             this.LabelData.Text = "Данные о мултфильме:";
-            //this.LabelData.Click += new System.EventHandler(this.label1_Click);
             // 
             // LabelLengh
             // 
@@ -112,7 +110,6 @@
             this.LabelName.Size = new System.Drawing.Size(60, 13);
             this.LabelName.TabIndex = 2;
             this.LabelName.Text = "Название:";
-            //this.LabelName.Click += new System.EventHandler(this.label3_Click);
             // 
             // nazvanieTextBox
             // 
@@ -120,7 +117,6 @@
             this.nazvanieTextBox.Name = "nazvanieTextBox";
             this.nazvanieTextBox.Size = new System.Drawing.Size(138, 20);
             this.nazvanieTextBox.TabIndex = 3;
-            //this.nazvanieTextBox.TextChanged += new System.EventHandler(this.nazvanieTextBox_TextChanged);
             // 
             // panel1
             // 
@@ -200,7 +196,6 @@
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 21;
             this.label9.Text = "1";
-            //this.label9.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -210,7 +205,6 @@
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 21;
             this.label8.Text = "2";
-            //this.label8.Click += new System.EventHandler(this.label7_Click);
             // 
             // label7
             // 
@@ -220,7 +214,6 @@
             this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 21;
             this.label7.Text = "3";
-            //this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -248,7 +241,6 @@
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 18;
             this.label5.Text = "Котенок";
-            //this.label5.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label3
             // 
@@ -267,7 +259,6 @@
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 18;
             this.label2.Text = "Котенок";
-            //this.label2.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // button4
             // 
@@ -304,7 +295,6 @@
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 18;
             this.label1.Text = "Котенок";
-            //this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // button6
             // 
@@ -358,7 +348,7 @@
             this.dobavitFonButton.TabIndex = 10;
             this.dobavitFonButton.Text = "Добавить";
             this.dobavitFonButton.UseVisualStyleBackColor = true;
-            this.dobavitFonButton.Click += new System.EventHandler(this.button6_Click);
+            this.dobavitFonButton.Click += new System.EventHandler(this.AddBackArtClick);
             // 
             // splitter1
             // 
@@ -383,7 +373,7 @@
             // SaveCharButton
             // 
             this.SaveCharButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveCharButton.Location = new System.Drawing.Point(0, 320);
+            this.SaveCharButton.Location = new System.Drawing.Point(0, 315);
             this.SaveCharButton.Name = "SaveCharButton";
             this.SaveCharButton.Size = new System.Drawing.Size(392, 30);
             this.SaveCharButton.TabIndex = 3;
@@ -396,7 +386,6 @@
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
             this.panel3.Controls.Add(this.OpenButton);
-            this.panel3.Controls.Add(this.AddPictureButton);
             this.panel3.Controls.Add(this.LabelPic);
             this.panel3.Controls.Add(this.LabelTime);
             this.panel3.Controls.Add(this.LabelDef2);
@@ -411,7 +400,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 26);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(392, 324);
+            this.panel3.Size = new System.Drawing.Size(392, 319);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
             // 
@@ -423,7 +412,6 @@
             this.SpriteNumberLabel.Size = new System.Drawing.Size(119, 13);
             this.SpriteNumberLabel.TabIndex = 16;
             this.SpriteNumberLabel.Text = "Количество спрайтов:";
-            //this.SpriteNumberLabel.Click += new System.EventHandler(this.label13_Click_1);
             // 
             // SpriteNumberTextBox
             // 
@@ -434,23 +422,13 @@
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(225, 153);
+            this.OpenButton.Location = new System.Drawing.Point(188, 153);
             this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(171, 30);
+            this.OpenButton.Size = new System.Drawing.Size(192, 30);
             this.OpenButton.TabIndex = 14;
             this.OpenButton.Text = "Открыть персонажа";
             this.OpenButton.UseVisualStyleBackColor = true;
-            this.OpenButton.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // AddPictureButton
-            // 
-            this.AddPictureButton.Location = new System.Drawing.Point(132, 169);
-            this.AddPictureButton.Name = "AddPictureButton";
-            this.AddPictureButton.Size = new System.Drawing.Size(65, 20);
-            this.AddPictureButton.TabIndex = 13;
-            this.AddPictureButton.Text = "Добавить";
-            this.AddPictureButton.UseVisualStyleBackColor = true;
-            //this.AddPictureButton.Click += new System.EventHandler(this.button4_Click);
+            this.OpenButton.Click += new System.EventHandler(this.OpenAddCharClick);
             // 
             // LabelPic
             // 
@@ -478,7 +456,6 @@
             this.LabelDef2.Size = new System.Drawing.Size(13, 13);
             this.LabelDef2.TabIndex = 10;
             this.LabelDef2.Text = "--";
-            //this.LabelDef2.Click += new System.EventHandler(this.label10_Click);
             // 
             // LabelDef1
             // 
@@ -488,7 +465,6 @@
             this.LabelDef1.Size = new System.Drawing.Size(13, 13);
             this.LabelDef1.TabIndex = 9;
             this.LabelDef1.Text = "--";
-            //this.LabelDef1.Click += new System.EventHandler(this.label9_Click);
             // 
             // LabelWalls
             // 
@@ -498,7 +474,6 @@
             this.LabelWalls.Size = new System.Drawing.Size(107, 13);
             this.LabelWalls.TabIndex = 8;
             this.LabelWalls.Text = "Границы движения:";
-            //this.LabelWalls.Click += new System.EventHandler(this.label8_Click);
             // 
             // TextBoxTime1
             // 
@@ -513,7 +488,6 @@
             this.TextBoxTime2.Name = "TextBoxTime2";
             this.TextBoxTime2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxTime2.TabIndex = 4;
-            //this.TextBoxTime2.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // TextBoxWall2
             // 
@@ -521,7 +495,6 @@
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
-            //this.TextBoxWall2.TextChanged += new System.EventHandler(this.TextBoxWall2_TextChanged);
             // 
             // TextBoxWall1
             // 
@@ -556,12 +529,13 @@
             // SaveMultButton
             // 
             this.SaveMultButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveMultButton.Location = new System.Drawing.Point(0, 350);
+            this.SaveMultButton.Location = new System.Drawing.Point(0, 345);
             this.SaveMultButton.Name = "SaveMultButton";
-            this.SaveMultButton.Size = new System.Drawing.Size(392, 30);
+            this.SaveMultButton.Size = new System.Drawing.Size(392, 35);
             this.SaveMultButton.TabIndex = 1;
             this.SaveMultButton.Text = "Сохранить мульт";
             this.SaveMultButton.UseVisualStyleBackColor = true;
+            this.SaveMultButton.Click += new System.EventHandler(this.SaveMultButton_Click);
             // 
             // ButtonAddChar
             // 
@@ -572,7 +546,7 @@
             this.ButtonAddChar.TabIndex = 0;
             this.ButtonAddChar.Text = "Добавить персонажа";
             this.ButtonAddChar.UseVisualStyleBackColor = true;
-            this.ButtonAddChar.Click += new System.EventHandler(this.button1_Click);
+            this.ButtonAddChar.Click += new System.EventHandler(this.buttonAddCharClick);
             // 
             // openFileDialog1
             // 
@@ -589,7 +563,6 @@
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
             this.Text = "Свойства персонажа";
-            //this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).EndInit();
@@ -623,7 +596,6 @@
         private System.Windows.Forms.Label LabelTime;
         private System.Windows.Forms.Label LabelDef2;
         private System.Windows.Forms.Button SaveCharButton;
-        private System.Windows.Forms.Button AddPictureButton;
         private System.Windows.Forms.Label LabelPic;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button OpenButton;

@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
             saveFileDialog1.Filter = "cpp files|*.cpp";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddCharClick(object sender, EventArgs e)
         {
             panel3.Visible = true;
         }
@@ -64,15 +64,7 @@ namespace WindowsFormsApplication1
                 File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
-
+        
         private void open_main(string filename)
         {
             File.AppendAllText(filename, "int main()" +                    Environment.NewLine);
@@ -210,17 +202,16 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void OpenAddCharClick(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = openFileDialog1.FileName;
             string fileText =File.ReadAllText(filename);
             nazvanieTextBox.Text = fileText;
-            MessageBox.Show("Ôàéë îòêðûò");
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void AddBackArtClick(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -230,30 +221,6 @@ namespace WindowsFormsApplication1
             PictureBoxBackground.Image = Image.FromFile(Path.Combine(Application.StartupPath, "kartinka.jpg"));
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void TextBoxWall2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -313,6 +280,11 @@ namespace WindowsFormsApplication1
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SaveMultButton_Click(object sender, EventArgs e)
+        {
+            //надо
         }
     }
 }
