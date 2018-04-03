@@ -43,16 +43,6 @@ namespace WindowsFormsApplication1
             panel3.Visible = true;
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private string PersonName(int nomer)
         {
             return "per" + nomer.ToString();
@@ -225,28 +215,8 @@ namespace WindowsFormsApplication1
             PictureBoxBackground.Image = Image.FromFile(Path.Combine(Application.StartupPath, "kartinka.jpg"));
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void TextBoxWall1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void SaveMultButton_Click(object sender, EventArgs e)
         {
-
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string filename = saveFileDialog1.FileName;
@@ -304,11 +274,6 @@ namespace WindowsFormsApplication1
                     TextBoxWall1.Text = persons[nomer].coord;
                 }
             }
-        }
-
-        private void OpenButton_MouseClick(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void SaveMultButton_Click(object sender, EventArgs e)
