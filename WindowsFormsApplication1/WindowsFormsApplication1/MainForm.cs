@@ -18,6 +18,9 @@ namespace WindowsFormsApplication1
             public Label l3;
             public Button b1;
             public Button b2;
+
+            public int nomer;
+            public String coord;
         };
 
         Person[] persons = new Person[200];
@@ -99,52 +102,53 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filename = saveFileDialog1.FileName;
+            persons[nomerPersa].l1 = new Label();
+            persons[nomerPersa].l1.Top = yPersa;
+            persons[nomerPersa].l1.Left = 30;
+            persons[nomerPersa].l1.Width = 20;
+            persons[nomerPersa].l1.Visible = true;
+            persons[nomerPersa].l1.Text = "1";
+            this.panel1.Controls.Add(persons[nomerPersa].l1);
 
-                Files.CreateStruct(filename);
-                open_main(filename);
+            persons[nomerPersa].l2 = new Label();
+            persons[nomerPersa].l2.Top = yPersa;
+            persons[nomerPersa].l2.Left = 60;
+            persons[nomerPersa].l2.Width = 60;
+            persons[nomerPersa].l2.Visible = true;
+            persons[nomerPersa].l2.Text = "Перс1";
+            this.panel1.Controls.Add(persons[nomerPersa].l2);
 
-                if (ComboBoxMove.Text == "Прямо")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place (filename, "per");
-                    Files.OpenWhile(filename);
-                    go_pryamo(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Волнами")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    Files.OpenWhile(filename);
-                    Sinus.MovePerson(filename, "per");
-                    close_while(filename);
-                    delete_pics2(filename, 5);                    
-                }
-                else if (ComboBoxMove.Text == "Кругами")
-                {
-                    circle_create_person(filename, "per");
-                    Files.OpenWhile(filename);
-                    circle(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
+            persons[nomerPersa].l3 = new Label();
+            persons[nomerPersa].l3.Top = yPersa;
+            persons[nomerPersa].l3.Left = 120;
+            persons[nomerPersa].l3.Width = 40;
+            persons[nomerPersa].l3.Visible = true;
+            persons[nomerPersa].l3.Text = "ocphcghfgh";
+            this.panel1.Controls.Add(persons[nomerPersa].l3);
 
-                Files.Ending(filename);
+            persons[nomerPersa].b1 = new Button();
+            persons[nomerPersa].b1.Top = yPersa;
+            persons[nomerPersa].b1.Left = 170;
+            persons[nomerPersa].b1.Width = 50;
+            persons[nomerPersa].b1.Visible = true;
+            persons[nomerPersa].b1.Text = "R" + nomerPersa.ToString();
+            persons[nomerPersa].b1.MouseClick +=
+                new MouseEventHandler(this.button1_Click_2);
+            this.panel1.Controls.Add(persons[nomerPersa].b1);
 
-                //Add TXLib and pics
-                File.Copy(Path.Combine(Application.StartupPath, "TXLib.h"), filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
-                string adres_papki = filename.Replace(Path.GetFileName(filename), "Pictures");
-                if (!Directory.Exists(adres_papki))
-                {
-                    Directory.CreateDirectory(adres_papki);
-                }
-                File.Copy(Path.Combine(Application.StartupPath, "kartinka.bmp"), adres_papki + "\\Personaj.bmp", true);
+            persons[nomerPersa].b2 = new Button();
+            persons[nomerPersa].b2.Top = yPersa;
+            persons[nomerPersa].b2.Left = 230;
+            persons[nomerPersa].b2.Width = 50;
+            persons[nomerPersa].b2.Visible = true;
+            persons[nomerPersa].b2.Text = "X";
+            this.panel1.Controls.Add(persons[nomerPersa].b2);
 
-                MessageBox.Show("Successfully");
-            }
+            persons[nomerPersa].coord = TextBoxWall1.Text;
+            persons[nomerPersa].nomer = nomerPersa;
+
+            nomerPersa++;
+            yPersa = yPersa + 30;
         }
 
         private void circle_create_person(string filename, string name)
@@ -224,48 +228,6 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            persons[nomerPersa].l1 = new Label();
-            persons[nomerPersa].l1.Top = yPersa;
-            persons[nomerPersa].l1.Left = 30;
-            persons[nomerPersa].l1.Width = 20;
-            persons[nomerPersa].l1.Visible = true;
-            persons[nomerPersa].l1.Text = "1";
-            this.panel1.Controls.Add(persons[nomerPersa].l1);
-
-            persons[nomerPersa].l2 = new Label();
-            persons[nomerPersa].l2.Top = yPersa;
-            persons[nomerPersa].l2.Left = 60;
-            persons[nomerPersa].l2.Width = 60;
-            persons[nomerPersa].l2.Visible = true;
-            persons[nomerPersa].l2.Text = "Перс1";
-            this.panel1.Controls.Add(persons[nomerPersa].l2);
-
-            persons[nomerPersa].l3 = new Label();
-            persons[nomerPersa].l3.Top = yPersa;
-            persons[nomerPersa].l3.Left = 120;
-            persons[nomerPersa].l3.Width = 40;
-            persons[nomerPersa].l3.Visible = true;
-            persons[nomerPersa].l3.Text = "ocphcghfgh";
-            this.panel1.Controls.Add(persons[nomerPersa].l3);
-
-            persons[nomerPersa].b1 = new Button();
-            persons[nomerPersa].b1.Top = yPersa;
-            persons[nomerPersa].b1.Left = 170;
-            persons[nomerPersa].b1.Width = 50;
-            persons[nomerPersa].b1.Visible = true;
-            persons[nomerPersa].b1.Text = "R";
-            this.panel1.Controls.Add(persons[nomerPersa].b1);
-
-            persons[nomerPersa].b2 = new Button();
-            persons[nomerPersa].b2.Top = yPersa;
-            persons[nomerPersa].b2.Left = 230;
-            persons[nomerPersa].b2.Width = 50;
-            persons[nomerPersa].b2.Visible = true;
-            persons[nomerPersa].b2.Text = "X";
-            this.panel1.Controls.Add(persons[nomerPersa].b2);
-
-            nomerPersa++;
-            yPersa = yPersa + 30;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -278,6 +240,73 @@ namespace WindowsFormsApplication1
         }
 
         private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveMultButton_Click(object sender, EventArgs e)
+        {
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filename = saveFileDialog1.FileName;
+
+                Files.CreateStruct(filename);
+                open_main(filename);
+
+                if (ComboBoxMove.Text == "Прямо")
+                {
+                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
+                    old_place(filename, "per");
+                    Files.OpenWhile(filename);
+                    go_pryamo(filename, "per");
+                    close_while(filename);
+                    delete_pics(filename);
+                }
+                else if (ComboBoxMove.Text == "Волнами")
+                {
+                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
+                    Files.OpenWhile(filename);
+                    Sinus.MovePerson(filename, "per");
+                    close_while(filename);
+                    delete_pics2(filename, 5);
+                }
+                else if (ComboBoxMove.Text == "Кругами")
+                {
+                    circle_create_person(filename, "per");
+                    Files.OpenWhile(filename);
+                    circle(filename, "per");
+                    close_while(filename);
+                    delete_pics(filename);
+                }
+
+                Files.Ending(filename);
+
+                //Add TXLib and pics
+                File.Copy(Path.Combine(Application.StartupPath, "TXLib.h"), filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
+                string adres_papki = filename.Replace(Path.GetFileName(filename), "Pictures");
+                if (!Directory.Exists(adres_papki))
+                {
+                    Directory.CreateDirectory(adres_papki);
+                }
+                File.Copy(Path.Combine(Application.StartupPath, "kartinka.bmp"), adres_papki + "\\Personaj.bmp", true);
+
+                MessageBox.Show("Successfully");
+            }
+        }
+
+        private void button1_Click_2(object sender, MouseEventArgs e)
+        {
+            for (int nomer = 0; nomer < nomerPersa; nomer++)
+            {
+                if (sender.Equals(persons[nomer].b1))
+                {
+                    TextBoxWall1.Text = persons[nomer].coord;
+                }
+            }
+        }
+
+        private void OpenButton_MouseClick(object sender, MouseEventArgs e)
         {
 
         }
