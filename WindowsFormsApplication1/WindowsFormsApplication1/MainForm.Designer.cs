@@ -59,10 +59,12 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openSpace = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.openSpace)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelData
@@ -125,32 +127,6 @@ namespace WindowsFormsApplication1
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(143, 308);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "номер";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(79, 308);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "время";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 308);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "имя";
             // PictureBoxBackground
             // 
             this.PictureBoxBackground.Location = new System.Drawing.Point(17, 160);
@@ -201,7 +177,7 @@ namespace WindowsFormsApplication1
             // SaveCharButton
             // 
             this.SaveCharButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveCharButton.Location = new System.Drawing.Point(0, 315);
+            this.SaveCharButton.Location = new System.Drawing.Point(0, 320);
             this.SaveCharButton.Name = "SaveCharButton";
             this.SaveCharButton.Size = new System.Drawing.Size(377, 30);
             this.SaveCharButton.TabIndex = 3;
@@ -211,6 +187,7 @@ namespace WindowsFormsApplication1
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.openSpace);
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
             this.panel3.Controls.Add(this.OpenButton);
@@ -228,7 +205,7 @@ namespace WindowsFormsApplication1
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 26);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(392, 319);
+            this.panel3.Size = new System.Drawing.Size(377, 324);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
             // 
@@ -357,7 +334,7 @@ namespace WindowsFormsApplication1
             // SaveMultButton
             // 
             this.SaveMultButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SaveMultButton.Location = new System.Drawing.Point(0, 345);
+            this.SaveMultButton.Location = new System.Drawing.Point(0, 350);
             this.SaveMultButton.Name = "SaveMultButton";
             this.SaveMultButton.Size = new System.Drawing.Size(377, 30);
             this.SaveMultButton.TabIndex = 1;
@@ -380,6 +357,14 @@ namespace WindowsFormsApplication1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // openSpace
+            // 
+            this.openSpace.Location = new System.Drawing.Point(65, 206);
+            this.openSpace.Name = "openSpace";
+            this.openSpace.Size = new System.Drawing.Size(245, 55);
+            this.openSpace.TabIndex = 17;
+            this.openSpace.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +382,7 @@ namespace WindowsFormsApplication1
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.openSpace)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,5 +420,6 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Button dobavitFonButton;
         private System.Windows.Forms.PictureBox PictureBoxBackground;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox openSpace;
     }
 }

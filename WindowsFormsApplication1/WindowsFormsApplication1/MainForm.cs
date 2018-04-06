@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
 
             public int nomer;
             public String coord;
+            public String adress;
         };
 
         Person[] persons = new Person[200];
@@ -139,6 +140,7 @@ namespace WindowsFormsApplication1
 
             nomerPersa++;
             yPersa = yPersa + 30;
+            openSpace.Image = null;
         }
 
         private void circle_create_person(string filename, string name)
@@ -200,9 +202,8 @@ namespace WindowsFormsApplication1
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = openFileDialog1.FileName;
-            string fileText =File.ReadAllText(filename);
-            nazvanieTextBox.Text = fileText;
+            openSpace.Image = Image.FromFile(openFileDialog1.FileName);
+            persons[nomerPersa].adress = openFileDialog1.FileName;
         }
 
         private void AddBackArtClick(object sender, EventArgs e)
@@ -272,13 +273,21 @@ namespace WindowsFormsApplication1
                 if (sender.Equals(persons[nomer].b1))
                 {
                     TextBoxWall1.Text = persons[nomer].coord;
+                    if (!String.IsNullOrEmpty(persons[nomer].adress))
+                    {
+                        openSpace.Image = Image.FromFile(persons[nomer].adress);
+                    }
+                    else
+                    {
+                        openSpace.Image = null;
+                    }
                 }
             }
         }
 
-        private void SaveMultButton_Click(object sender, EventArgs e)
+        private void OpenSpace_Click(object sender, EventArgs e)
         {
-            //надо
+                            
         }
     }
 }
