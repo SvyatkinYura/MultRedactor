@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
         public static void OpenWhile(string filename)
         {
             File.AppendAllText(filename, Environment.NewLine);
-            File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE));" + Environment.NewLine);
+            File.AppendAllText(filename, "    while (!GetAsyncKeyState(VK_ESCAPE))" + Environment.NewLine);
             File.AppendAllText(filename, "    {" + Environment.NewLine);
             File.AppendAllText(filename, "        txSetColor(TX_RED);" + Environment.NewLine);
             File.AppendAllText(filename, "        txSetFillColor(TX_RED);" + Environment.NewLine);

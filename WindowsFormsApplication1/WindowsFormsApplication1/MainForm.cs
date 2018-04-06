@@ -209,15 +209,13 @@ namespace WindowsFormsApplication1
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = openFileDialog1.FileName;
-            string fileText =File.ReadAllText(filename);
-            nazvanieTextBox.Text = fileText;
-            PictureBoxBackground.Image = Image.FromFile(Path.Combine(Application.StartupPath, "kartinka.jpg"));
+            PictureBoxBackground.Image = Image.FromFile(openFileDialog1.FileName);
         }
 
         private void SaveMultButton_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK &&
+                PictureBoxBackground.Image != null)
             {
                 string filename = saveFileDialog1.FileName;
 
@@ -239,13 +237,22 @@ namespace WindowsFormsApplication1
                     Files.OpenWhile(filename);
                     Sinus.MovePerson(filename, "per");
                     close_while(filename);
-                    delete_pics2(filename, 5);
+                    delete_pics(filename);
                 }
                 else if (ComboBoxMove.Text == "Кругами")
                 {
                     circle_create_person(filename, "per");
                     Files.OpenWhile(filename);
                     circle(filename, "per");
+                    close_while(filename);
+                    delete_pics(filename);
+                }
+                else if (ComboBoxMove.Text == "Диагонально")
+                {
+                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
+                    old_place(filename, "per");
+                    Files.OpenWhile(filename);
+                    go_pryamo(filename, "per");
                     close_while(filename);
                     delete_pics(filename);
                 }
@@ -276,9 +283,9 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void SaveMultButton_Click(object sender, EventArgs e)
+        private void nazvanieTextBox_TextChanged(object sender, EventArgs e)
         {
-            //надо
+
         }
     }
 }
