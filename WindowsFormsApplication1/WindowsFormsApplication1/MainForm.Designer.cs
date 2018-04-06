@@ -124,33 +124,6 @@ namespace WindowsFormsApplication1
             this.label13.Size = new System.Drawing.Size(180, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(143, 308);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "номер";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(79, 308);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "время";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 308);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "имя";
             // PictureBoxBackground
             // 
             this.PictureBoxBackground.Location = new System.Drawing.Point(17, 160);
