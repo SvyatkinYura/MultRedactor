@@ -154,8 +154,8 @@ namespace WindowsFormsApplication1
 
         private void old_place(string filename, string name)
         {
-            File.AppendAllText(filename, "  " + name + ".x = 10; " + Environment.NewLine);
-            File.AppendAllText(filename, "   " + name + ".y = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "  " + name + ".x =TextBox ++ 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "   " + name + ".yTextBox ++ 10; " + Environment.NewLine);
             File.AppendAllText(filename, "   " + name + ".nomer_kadra = 0; " + Environment.NewLine);
             File.AppendAllText(filename, " " + name + ".gr_dvigx = 1000; " + Environment.NewLine);
         }
@@ -165,7 +165,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        txTransparentBlt(txDC(), " + name + ".x, " + name + ".y, 55, 86, " + name + ".texture, 55 * " + name + ".nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
             File.AppendAllText(filename, "        " + name + ".x++; " + Environment.NewLine);
             File.AppendAllText(filename, "        " + name + ".nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > 2) " + Environment.NewLine);
+            File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > " + TextBoxWall1.Text + ") " + Environment.NewLine);
             File.AppendAllText(filename, "        {  " + Environment.NewLine);
             File.AppendAllText(filename, "            " + name + ".nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);
@@ -183,9 +183,9 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "        nomer_kadra++;"+                                      Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
            File.AppendAllText(filename, "        if (nomer_kadra > 2)"+                                Environment.NewLine);
-           File.AppendAllText(filename, "          {"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "        {"+                                                 Environment.NewLine);
            File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
-           File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "        }"+                                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine); 
            File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
            File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
@@ -274,11 +274,6 @@ namespace WindowsFormsApplication1
                     TextBoxWall1.Text = persons[nomer].coord;
                 }
             }
-        }
-
-        private void SaveMultButton_Click(object sender, EventArgs e)
-        {
-            //надо
         }
     }
 }
