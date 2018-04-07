@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
 
             public int nomer;
             public String coord;
+            public String adress;
         };
 
         Person[] persons = new Person[200];
@@ -139,6 +140,7 @@ namespace WindowsFormsApplication1
 
             nomerPersa++;
             yPersa = yPersa + 30;
+            openSpace.Image = null;
         }
 
         private void circle_create_person(string filename, string name)
@@ -154,8 +156,8 @@ namespace WindowsFormsApplication1
 
         private void old_place(string filename, string name)
         {
-            File.AppendAllText(filename, "  " + name + ".x = 10; " + Environment.NewLine);
-            File.AppendAllText(filename, "   " + name + ".y = 10; " + Environment.NewLine);
+            File.AppendAllText(filename, "  " + name + ".x = " + TextBoxWall1.Text + "; " + Environment.NewLine);
+            File.AppendAllText(filename, "   " + name + ".y = " + TextBoxWall1.Text + "; " + Environment.NewLine);
             File.AppendAllText(filename, "   " + name + ".nomer_kadra = 0; " + Environment.NewLine);
             File.AppendAllText(filename, " " + name + ".gr_dvigx = 1000; " + Environment.NewLine);
         }
@@ -165,7 +167,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "        txTransparentBlt(txDC(), " + name + ".x, " + name + ".y, 55, 86, " + name + ".texture, 55 * " + name + ".nomer_kadra, 0, RGB(0, 255, 255)); " + Environment.NewLine);
             File.AppendAllText(filename, "        " + name + ".x++; " + Environment.NewLine);
             File.AppendAllText(filename, "        " + name + ".nomer_kadra++;" + Environment.NewLine);
-            File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > 2) " + Environment.NewLine);
+            File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > " + TextBoxWall1.Text + ") " + Environment.NewLine);
             File.AppendAllText(filename, "        {  " + Environment.NewLine);
             File.AppendAllText(filename, "            " + name + ".nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);
@@ -183,9 +185,9 @@ namespace WindowsFormsApplication1
            File.AppendAllText(filename, "        nomer_kadra++;"+                                      Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
            File.AppendAllText(filename, "        if (nomer_kadra > 2)"+                                Environment.NewLine);
-           File.AppendAllText(filename, "          {"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "        {"+                                                 Environment.NewLine);
            File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
-           File.AppendAllText(filename, "          }"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "        }"+                                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine); 
            File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
            File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
@@ -200,9 +202,8 @@ namespace WindowsFormsApplication1
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = openFileDialog1.FileName;
-            string fileText =File.ReadAllText(filename);
-            nazvanieTextBox.Text = fileText;
+            openSpace.Image = Image.FromFile(openFileDialog1.FileName);
+            persons[nomerPersa].adress = openFileDialog1.FileName;
         }
 
         private void AddBackArtClick(object sender, EventArgs e)
@@ -279,13 +280,16 @@ namespace WindowsFormsApplication1
                 if (sender.Equals(persons[nomer].b1))
                 {
                     TextBoxWall1.Text = persons[nomer].coord;
+                    if (!String.IsNullOrEmpty(persons[nomer].adress))
+                    {
+                        openSpace.Image = Image.FromFile(persons[nomer].adress);
+                    }
+                    else
+                    {
+                        openSpace.Image = null;
+                    }
                 }
             }
-        }
-
-        private void nazvanieTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

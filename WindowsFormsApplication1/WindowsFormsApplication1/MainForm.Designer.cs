@@ -59,10 +59,12 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openSpace = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.openSpace)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelData
@@ -186,6 +188,7 @@ namespace WindowsFormsApplication1
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.openSpace);
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
             this.panel3.Controls.Add(this.OpenButton);
@@ -355,6 +358,14 @@ namespace WindowsFormsApplication1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // openSpace
+            // 
+            this.openSpace.Location = new System.Drawing.Point(65, 206);
+            this.openSpace.Name = "openSpace";
+            this.openSpace.Size = new System.Drawing.Size(245, 55);
+            this.openSpace.TabIndex = 17;
+            this.openSpace.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +383,7 @@ namespace WindowsFormsApplication1
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.openSpace)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,5 +421,6 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Button dobavitFonButton;
         private System.Windows.Forms.PictureBox PictureBoxBackground;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox openSpace;
     }
 }
