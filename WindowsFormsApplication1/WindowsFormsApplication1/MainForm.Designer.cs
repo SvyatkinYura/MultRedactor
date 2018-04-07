@@ -101,7 +101,6 @@ namespace WindowsFormsApplication1
             this.nazvanieTextBox.Name = "nazvanieTextBox";
             this.nazvanieTextBox.Size = new System.Drawing.Size(138, 20);
             this.nazvanieTextBox.TabIndex = 3;
-            this.nazvanieTextBox.TextChanged += new System.EventHandler(this.nazvanieTextBox_TextChanged);
             // 
             // panel1
             // 
