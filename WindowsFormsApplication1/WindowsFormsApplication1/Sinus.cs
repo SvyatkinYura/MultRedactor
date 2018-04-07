@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
         {
             File.AppendAllText(filename, "    Person " + name + ";" + Environment.NewLine);
             File.AppendAllText(filename,                              Environment.NewLine);
-            File.AppendAllText(filename, "    " + name + ".texture = txLoadImage(\"Pictures\\Personaj.bmp\");" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".texture = txLoadImage(\"Pictures\\\\Personaj.bmp\");" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".x = " + xBeg + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".y = " + xBeg + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".nomer_kadra = 0;" + Environment.NewLine);
