@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
 
             public int nomer;
             public String coord;
+            public String coord2;
             public String adress;
         };
 
@@ -136,6 +137,7 @@ namespace WindowsFormsApplication1
             this.panel1.Controls.Add(persons[nomerPersa].b2);
 
             persons[nomerPersa].coord = TextBoxWall1.Text;
+            persons[nomerPersa].coord2 = TextBoxWall2.Text;
             persons[nomerPersa].nomer = nomerPersa;
 
             nomerPersa++;
@@ -280,6 +282,8 @@ namespace WindowsFormsApplication1
                 if (sender.Equals(persons[nomer].b1))
                 {
                     TextBoxWall1.Text = persons[nomer].coord;
+                    TextBoxWall2.Text = persons[nomer].coord2;
+                    
                     if (!String.IsNullOrEmpty(persons[nomer].adress))
                     {
                         openSpace.Image = Image.FromFile(persons[nomer].adress);
