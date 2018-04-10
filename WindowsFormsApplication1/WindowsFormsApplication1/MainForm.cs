@@ -134,7 +134,10 @@ namespace WindowsFormsApplication1
             persons[nomerPersa].b2.Width = 50;
             persons[nomerPersa].b2.Visible = true;
             persons[nomerPersa].b2.Text = "X";
+            persons[nomerPersa].b2.Click +=
+                new System.EventHandler(this.label13_Click);
             this.panel1.Controls.Add(persons[nomerPersa].b2);
+        
 
             persons[nomerPersa].coord = TextBoxWall1.Text;
             persons[nomerPersa].coord2 = TextBoxWall2.Text;
@@ -294,6 +297,17 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l1);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l2);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l3);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].b1);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].b2);
+            nomerPersa--;
+            yPersa = yPersa - 30;
         }
     }
 }

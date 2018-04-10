@@ -41,6 +41,7 @@ namespace WindowsFormsApplication1
             this.panel2 = new System.Windows.Forms.Panel();
             this.SaveCharButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.openSpace = new System.Windows.Forms.PictureBox();
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
             this.OpenButton = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openSpace = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -126,6 +126,7 @@ namespace WindowsFormsApplication1
             this.label13.Size = new System.Drawing.Size(180, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // PictureBoxBackground
             // 
@@ -208,6 +209,14 @@ namespace WindowsFormsApplication1
             this.panel3.Size = new System.Drawing.Size(377, 324);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
+            // 
+            // openSpace
+            // 
+            this.openSpace.Location = new System.Drawing.Point(65, 206);
+            this.openSpace.Name = "openSpace";
+            this.openSpace.Size = new System.Drawing.Size(245, 55);
+            this.openSpace.TabIndex = 17;
+            this.openSpace.TabStop = false;
             // 
             // SpriteNumberLabel
             // 
@@ -356,14 +365,6 @@ namespace WindowsFormsApplication1
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // openSpace
-            // 
-            this.openSpace.Location = new System.Drawing.Point(65, 206);
-            this.openSpace.Name = "openSpace";
-            this.openSpace.Size = new System.Drawing.Size(245, 55);
-            this.openSpace.TabIndex = 17;
-            this.openSpace.TabStop = false;
             // 
             // MainForm
             // 
