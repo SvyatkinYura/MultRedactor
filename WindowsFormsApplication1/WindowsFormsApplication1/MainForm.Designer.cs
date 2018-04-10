@@ -41,6 +41,7 @@ namespace WindowsFormsApplication1
             this.panel2 = new System.Windows.Forms.Panel();
             this.SaveCharButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.openSpace = new System.Windows.Forms.PictureBox();
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
             this.OpenButton = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openSpace = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -209,6 +209,14 @@ namespace WindowsFormsApplication1
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
             // 
+            // openSpace
+            // 
+            this.openSpace.Location = new System.Drawing.Point(65, 206);
+            this.openSpace.Name = "openSpace";
+            this.openSpace.Size = new System.Drawing.Size(245, 55);
+            this.openSpace.TabIndex = 17;
+            this.openSpace.TabStop = false;
+            // 
             // SpriteNumberLabel
             // 
             this.SpriteNumberLabel.AutoSize = true;
@@ -300,6 +308,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
+            this.TextBoxWall2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // TextBoxWall1
             // 
@@ -307,6 +316,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall1.Name = "TextBoxWall1";
             this.TextBoxWall1.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall1.TabIndex = 2;
+            this.TextBoxWall1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // ComboBoxMove
             // 
@@ -356,14 +366,6 @@ namespace WindowsFormsApplication1
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // openSpace
-            // 
-            this.openSpace.Location = new System.Drawing.Point(65, 206);
-            this.openSpace.Name = "openSpace";
-            this.openSpace.Size = new System.Drawing.Size(245, 55);
-            this.openSpace.TabIndex = 17;
-            this.openSpace.TabStop = false;
             // 
             // MainForm
             // 
