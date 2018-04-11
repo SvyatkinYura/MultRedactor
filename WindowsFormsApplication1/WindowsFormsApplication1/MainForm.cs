@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
 
         int yPersa = 300;
         int nomerPersa = 0;
-
+        
         PictureBox[] pic1 = new PictureBox[1000];
 
         public MainForm()
@@ -38,6 +38,8 @@ namespace WindowsFormsApplication1
 
             openFileDialog1.Filter = "Kartinki|*.bmp";
             saveFileDialog1.Filter = "cpp files|*.cpp";
+
+
         }
 
         private void buttonAddCharClick(object sender, EventArgs e)
@@ -49,6 +51,7 @@ namespace WindowsFormsApplication1
         {
             return "per" + nomer.ToString();
         }
+        
 
         private void delete_pics2(string filename, int nomer)
         {
@@ -102,7 +105,7 @@ namespace WindowsFormsApplication1
             persons[nomerPersa].l1.Left = 30;
             persons[nomerPersa].l1.Width = 20;
             persons[nomerPersa].l1.Visible = true;
-            persons[nomerPersa].l1.Text = "1";
+            persons[nomerPersa].l1.Text = nomerPersa.ToString()+1;
             this.panel1.Controls.Add(persons[nomerPersa].l1);
 
             persons[nomerPersa].l2 = new Label();
@@ -110,7 +113,7 @@ namespace WindowsFormsApplication1
             persons[nomerPersa].l2.Left = 60;
             persons[nomerPersa].l2.Width = 60;
             persons[nomerPersa].l2.Visible = true;
-            persons[nomerPersa].l2.Text = "Перс1";
+            persons[nomerPersa].l2.Text = "Перс " + nomerPersa.ToString()+1;
             this.panel1.Controls.Add(persons[nomerPersa].l2);
 
             persons[nomerPersa].l3 = new Label();
@@ -118,7 +121,7 @@ namespace WindowsFormsApplication1
             persons[nomerPersa].l3.Left = 120;
             persons[nomerPersa].l3.Width = 40;
             persons[nomerPersa].l3.Visible = true;
-            persons[nomerPersa].l3.Text = "ocphcghfgh";
+            persons[nomerPersa].l3.Text = "saved";
             this.panel1.Controls.Add(persons[nomerPersa].l3);
 
             persons[nomerPersa].b1 = new Button();
@@ -126,22 +129,35 @@ namespace WindowsFormsApplication1
             persons[nomerPersa].b1.Left = 170;
             persons[nomerPersa].b1.Width = 50;
             persons[nomerPersa].b1.Visible = true;
-            persons[nomerPersa].b1.Text = "R" + nomerPersa.ToString();
+            persons[nomerPersa].b1.Text = "view" + nomerPersa.ToString();
             persons[nomerPersa].b1.MouseClick +=
                 new MouseEventHandler(this.button1_Click_2);
             this.panel1.Controls.Add(persons[nomerPersa].b1);
+
+            ToolTip tView = new ToolTip();
+            tView.IsBalloon = true;
+            tView.InitialDelay = 0;
+            tView.ShowAlways = true;
+            tView.AutoPopDelay = 2000;
+            tView.SetToolTip(persons[nomerPersa].b1, "View/edit person");
 
             persons[nomerPersa].b2 = new Button();
             persons[nomerPersa].b2.Top = yPersa;
             persons[nomerPersa].b2.Left = 230;
             persons[nomerPersa].b2.Width = 50;
             persons[nomerPersa].b2.Visible = true;
-            persons[nomerPersa].b2.Text = "X";
+            persons[nomerPersa].b2.Text = "Del";
             persons[nomerPersa].b2.Click +=
                 new System.EventHandler(this.label13_Click);
             this.panel1.Controls.Add(persons[nomerPersa].b2);
-        
 
+            ToolTip tDelete = new ToolTip();
+            tDelete.IsBalloon = true;
+            tDelete.InitialDelay = 0;
+            tDelete.ShowAlways = true;
+            tDelete.AutoPopDelay = 2000;
+            tDelete.SetToolTip(persons[nomerPersa].b2, "Delete this person");
+        
             persons[nomerPersa].coord = TextBoxWall1.Text;
             persons[nomerPersa].coord2 = TextBoxWall2.Text;
             persons[nomerPersa].nomer = nomerPersa;
@@ -300,6 +316,15 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+        }
+
+        private void LabelBackground_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
         }
 
         private void label13_Click(object sender, EventArgs e)

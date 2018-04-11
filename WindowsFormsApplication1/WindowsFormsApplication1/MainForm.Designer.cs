@@ -60,6 +60,7 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -104,6 +105,7 @@ namespace WindowsFormsApplication1
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.PictureBoxBackground);
             this.panel1.Controls.Add(this.LabelBackground);
@@ -144,6 +146,7 @@ namespace WindowsFormsApplication1
             this.LabelBackground.Size = new System.Drawing.Size(77, 13);
             this.LabelBackground.TabIndex = 11;
             this.LabelBackground.Text = "Выбрать фон:";
+            this.LabelBackground.Click += new System.EventHandler(this.LabelBackground_Click);
             // 
             // dobavitFonButton
             // 
@@ -368,6 +371,16 @@ namespace WindowsFormsApplication1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 274);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(259, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "number    name         state             view             delete";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,5 +437,6 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.PictureBox PictureBoxBackground;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox openSpace;
+        private System.Windows.Forms.Label label1;
     }
 }
