@@ -126,6 +126,7 @@ namespace WindowsFormsApplication1
             this.label13.Size = new System.Drawing.Size(180, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // PictureBoxBackground
             // 
