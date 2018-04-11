@@ -41,6 +41,7 @@ namespace WindowsFormsApplication1
             this.panel2 = new System.Windows.Forms.Panel();
             this.SaveCharButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.openSpace = new System.Windows.Forms.PictureBox();
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
             this.OpenButton = new System.Windows.Forms.Button();
@@ -59,7 +60,7 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openSpace = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -104,6 +105,7 @@ namespace WindowsFormsApplication1
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.PictureBoxBackground);
             this.panel1.Controls.Add(this.LabelBackground);
@@ -126,6 +128,7 @@ namespace WindowsFormsApplication1
             this.label13.Size = new System.Drawing.Size(180, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // PictureBoxBackground
             // 
@@ -143,6 +146,7 @@ namespace WindowsFormsApplication1
             this.LabelBackground.Size = new System.Drawing.Size(77, 13);
             this.LabelBackground.TabIndex = 11;
             this.LabelBackground.Text = "Выбрать фон:";
+            this.LabelBackground.Click += new System.EventHandler(this.LabelBackground_Click);
             // 
             // dobavitFonButton
             // 
@@ -208,6 +212,14 @@ namespace WindowsFormsApplication1
             this.panel3.Size = new System.Drawing.Size(377, 324);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
+            // 
+            // openSpace
+            // 
+            this.openSpace.Location = new System.Drawing.Point(65, 206);
+            this.openSpace.Name = "openSpace";
+            this.openSpace.Size = new System.Drawing.Size(245, 55);
+            this.openSpace.TabIndex = 17;
+            this.openSpace.TabStop = false;
             // 
             // SpriteNumberLabel
             // 
@@ -300,6 +312,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
+            this.TextBoxWall2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // TextBoxWall1
             // 
@@ -307,6 +320,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall1.Name = "TextBoxWall1";
             this.TextBoxWall1.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall1.TabIndex = 2;
+            this.TextBoxWall1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // ComboBoxMove
             // 
@@ -357,13 +371,15 @@ namespace WindowsFormsApplication1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // openSpace
+            // label1
             // 
-            this.openSpace.Location = new System.Drawing.Point(65, 206);
-            this.openSpace.Name = "openSpace";
-            this.openSpace.Size = new System.Drawing.Size(245, 55);
-            this.openSpace.TabIndex = 17;
-            this.openSpace.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 274);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(259, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "number    name         state             view             delete";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // MainForm
             // 
@@ -421,5 +437,6 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.PictureBox PictureBoxBackground;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox openSpace;
+        private System.Windows.Forms.Label label1;
     }
 }
