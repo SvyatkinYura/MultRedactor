@@ -23,13 +23,17 @@ namespace WindowsFormsApplication1
             public String coord;
             public String coord2;
             public String adress;
+            public String time1;
+            public String time2;
+            public String sprite;
+            public String moveside;
         };
 
         Person[] persons = new Person[200];
 
         int yPersa = 300;
         int nomerPersa = 0;
-        
+        int pNomer = 0;
         PictureBox[] pic1 = new PictureBox[1000];
 
         public MainForm()
@@ -45,6 +49,7 @@ namespace WindowsFormsApplication1
         private void buttonAddCharClick(object sender, EventArgs e)
         {
             panel3.Visible = true;
+            pNomer = -120;
         }
 
         private string PersonName(int nomer)
@@ -97,74 +102,91 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
+            if (pNomer == -120)
+            {
+                persons[nomerPersa].l1 = new Label();
+                persons[nomerPersa].l1.Top = yPersa;
+                persons[nomerPersa].l1.Left = 30;
+                persons[nomerPersa].l1.Width = 20;
+                persons[nomerPersa].l1.Visible = true;
+                persons[nomerPersa].l1.Text = (nomerPersa + 1).ToString();
+                this.panel1.Controls.Add(persons[nomerPersa].l1);
+
+                persons[nomerPersa].l2 = new Label();
+                persons[nomerPersa].l2.Top = yPersa;
+                persons[nomerPersa].l2.Left = 60;
+                persons[nomerPersa].l2.Width = 60;
+                persons[nomerPersa].l2.Visible = true;
+                persons[nomerPersa].l2.Text = "Перс" + (nomerPersa + 1).ToString();
+                this.panel1.Controls.Add(persons[nomerPersa].l2);
+
+                persons[nomerPersa].l3 = new Label();
+                persons[nomerPersa].l3.Top = yPersa;
+                persons[nomerPersa].l3.Left = 120;
+                persons[nomerPersa].l3.Width = 40;
+                persons[nomerPersa].l3.Visible = true;
+                persons[nomerPersa].l3.Text = "saved";
+                this.panel1.Controls.Add(persons[nomerPersa].l3);
+
+                persons[nomerPersa].b1 = new Button();
+                persons[nomerPersa].b1.Top = yPersa;
+                persons[nomerPersa].b1.Left = 170;
+                persons[nomerPersa].b1.Width = 50;
+                persons[nomerPersa].b1.Visible = true;
+                persons[nomerPersa].b1.Text = "Edit";
+                persons[nomerPersa].b1.MouseClick +=
+                    new MouseEventHandler(this.button1_Click_2);
+                this.panel1.Controls.Add(persons[nomerPersa].b1);
+                
+                ToolTip tView = new ToolTip();
+                tView.IsBalloon = true;
+                tView.InitialDelay = 0;
+                tView.ShowAlways = true;
+                tView.AutoPopDelay = 2000;
+                tView.SetToolTip(persons[nomerPersa].b1, "View/edit person");
+
+                persons[nomerPersa].b2 = new Button();
+                persons[nomerPersa].b2.Top = yPersa;
+                persons[nomerPersa].b2.Left = 230;
+                persons[nomerPersa].b2.Width = 50;
+                persons[nomerPersa].b2.Visible = true;
+                persons[nomerPersa].b2.Text = "Del";
+                persons[nomerPersa].b2.Click +=
+                    new System.EventHandler(this.label13_Click);
+                this.panel1.Controls.Add(persons[nomerPersa].b2);
+
+                ToolTip tDelete = new ToolTip();
+                tDelete.IsBalloon = true;
+                tDelete.InitialDelay = 0;
+                tDelete.ShowAlways = true;
+                tDelete.AutoPopDelay = 2000;
+                tDelete.SetToolTip(persons[nomerPersa].b2, "Delete this person");
+
+                persons[nomerPersa].coord = TextBoxWall1.Text;
+                persons[nomerPersa].coord2 = TextBoxWall2.Text;
+                persons[nomerPersa].time1 = TextBoxTime1.Text;
+                persons[nomerPersa].time2 = TextBoxTime2.Text;
+                persons[nomerPersa].sprite = SpriteNumberTextBox.Text;
+                persons[nomerPersa].moveside = ComboBoxMove.Text;
+                persons[nomerPersa].nomer = nomerPersa;
+
+                nomerPersa++;
+                yPersa = yPersa + 30;
+                openSpace.Image = null;
+            }
+            else
+            {
+                persons[pNomer].coord = TextBoxWall1.Text;
+                persons[pNomer].coord2 = TextBoxWall2.Text;
+                persons[pNomer].time1 = TextBoxTime1.Text;
+                persons[pNomer].time2 = TextBoxTime2.Text;
+                persons[pNomer].sprite = SpriteNumberTextBox.Text;
+                persons[pNomer].moveside = ComboBoxMove.Text;
+                persons[pNomer].nomer = pNomer;
+            }
+
             String[] arr = TextBoxWall1.Text.Split(new String[] { " " }, StringSplitOptions.None);
-            MessageBox.Show(arr[0]);
-
-            persons[nomerPersa].l1 = new Label();
-            persons[nomerPersa].l1.Top = yPersa;
-            persons[nomerPersa].l1.Left = 30;
-            persons[nomerPersa].l1.Width = 20;
-            persons[nomerPersa].l1.Visible = true;
-            persons[nomerPersa].l1.Text = nomerPersa.ToString()+1;
-            this.panel1.Controls.Add(persons[nomerPersa].l1);
-
-            persons[nomerPersa].l2 = new Label();
-            persons[nomerPersa].l2.Top = yPersa;
-            persons[nomerPersa].l2.Left = 60;
-            persons[nomerPersa].l2.Width = 60;
-            persons[nomerPersa].l2.Visible = true;
-            persons[nomerPersa].l2.Text = "Перс " + nomerPersa.ToString()+1;
-            this.panel1.Controls.Add(persons[nomerPersa].l2);
-
-            persons[nomerPersa].l3 = new Label();
-            persons[nomerPersa].l3.Top = yPersa;
-            persons[nomerPersa].l3.Left = 120;
-            persons[nomerPersa].l3.Width = 40;
-            persons[nomerPersa].l3.Visible = true;
-            persons[nomerPersa].l3.Text = "saved";
-            this.panel1.Controls.Add(persons[nomerPersa].l3);
-
-            persons[nomerPersa].b1 = new Button();
-            persons[nomerPersa].b1.Top = yPersa;
-            persons[nomerPersa].b1.Left = 170;
-            persons[nomerPersa].b1.Width = 50;
-            persons[nomerPersa].b1.Visible = true;
-            persons[nomerPersa].b1.Text = "view" + nomerPersa.ToString();
-            persons[nomerPersa].b1.MouseClick +=
-                new MouseEventHandler(this.button1_Click_2);
-            this.panel1.Controls.Add(persons[nomerPersa].b1);
-
-            ToolTip tView = new ToolTip();
-            tView.IsBalloon = true;
-            tView.InitialDelay = 0;
-            tView.ShowAlways = true;
-            tView.AutoPopDelay = 2000;
-            tView.SetToolTip(persons[nomerPersa].b1, "View/edit person");
-
-            persons[nomerPersa].b2 = new Button();
-            persons[nomerPersa].b2.Top = yPersa;
-            persons[nomerPersa].b2.Left = 230;
-            persons[nomerPersa].b2.Width = 50;
-            persons[nomerPersa].b2.Visible = true;
-            persons[nomerPersa].b2.Text = "Del";
-            persons[nomerPersa].b2.Click +=
-                new System.EventHandler(this.label13_Click);
-            this.panel1.Controls.Add(persons[nomerPersa].b2);
-
-            ToolTip tDelete = new ToolTip();
-            tDelete.IsBalloon = true;
-            tDelete.InitialDelay = 0;
-            tDelete.ShowAlways = true;
-            tDelete.AutoPopDelay = 2000;
-            tDelete.SetToolTip(persons[nomerPersa].b2, "Delete this person");
-        
-            persons[nomerPersa].coord = TextBoxWall1.Text;
-            persons[nomerPersa].coord2 = TextBoxWall2.Text;
-            persons[nomerPersa].nomer = nomerPersa;
-
-            nomerPersa++;
-            yPersa = yPersa + 30;
-            openSpace.Image = null;
+            //MessageBox.Show(arr[0]);
         }
 
         private void circle_create_person(string filename, string name)
@@ -227,7 +249,14 @@ namespace WindowsFormsApplication1
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             openSpace.Image = Image.FromFile(openFileDialog1.FileName);
-            persons[nomerPersa].adress = openFileDialog1.FileName;
+            if (pNomer == -120)
+            {
+                persons[nomerPersa].adress = openFileDialog1.FileName;
+            }
+            else
+            {
+                persons[pNomer].adress = openFileDialog1.FileName;
+            }
         }
 
         private void AddBackArtClick(object sender, EventArgs e)
@@ -305,7 +334,12 @@ namespace WindowsFormsApplication1
                 {
                     TextBoxWall1.Text = persons[nomer].coord;
                     TextBoxWall2.Text = persons[nomer].coord2;
-                    
+                    TextBoxTime1.Text = persons[nomer].time1;
+                    TextBoxTime2.Text = persons[nomer].time2;
+                    SpriteNumberTextBox.Text = persons[nomer].sprite;
+                    ComboBoxMove.Text = persons[nomer].moveside;
+                    pNomer = persons[nomer].nomer;
+
                     if (!String.IsNullOrEmpty(persons[nomer].adress))
                     {
                         openSpace.Image = Image.FromFile(persons[nomer].adress);
@@ -320,7 +354,6 @@ namespace WindowsFormsApplication1
 
         private void LabelBackground_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
