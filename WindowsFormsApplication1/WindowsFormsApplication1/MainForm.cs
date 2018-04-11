@@ -94,6 +94,9 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
+            String[] arr = TextBoxWall1.Text.Split(new String[] { " " }, StringSplitOptions.None);
+            MessageBox.Show(arr[0]);
+
             persons[nomerPersa].l1 = new Label();
             persons[nomerPersa].l1.Top = yPersa;
             persons[nomerPersa].l1.Left = 30;
@@ -308,6 +311,16 @@ namespace WindowsFormsApplication1
             this.panel1.Controls.Remove(persons[nomerPersa - 1].b2);
             nomerPersa--;
             yPersa = yPersa - 30;
+        }
+
+        private void TextBoxWall1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            if (!(char.IsDigit(c) || c == '\b' || c == ' '))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
