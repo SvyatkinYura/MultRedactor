@@ -128,6 +128,7 @@ namespace WindowsFormsApplication1
             this.label13.Size = new System.Drawing.Size(180, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "ИНФОРМАЦИЯ О ПЕРСОНАЖАХ";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // PictureBoxBackground
             // 
@@ -311,6 +312,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
+            this.TextBoxWall2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // TextBoxWall1
             // 
@@ -318,6 +320,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall1.Name = "TextBoxWall1";
             this.TextBoxWall1.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall1.TabIndex = 2;
+            this.TextBoxWall1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // ComboBoxMove
             // 

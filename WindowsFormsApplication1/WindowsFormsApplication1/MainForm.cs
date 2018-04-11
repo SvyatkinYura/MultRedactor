@@ -97,6 +97,9 @@ namespace WindowsFormsApplication1
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
+            String[] arr = TextBoxWall1.Text.Split(new String[] { " " }, StringSplitOptions.None);
+            MessageBox.Show(arr[0]);
+
             persons[nomerPersa].l1 = new Label();
             persons[nomerPersa].l1.Top = yPersa;
             persons[nomerPersa].l1.Left = 30;
@@ -131,14 +134,6 @@ namespace WindowsFormsApplication1
                 new MouseEventHandler(this.button1_Click_2);
             this.panel1.Controls.Add(persons[nomerPersa].b1);
 
-            persons[nomerPersa].b2 = new Button();
-            persons[nomerPersa].b2.Top = yPersa;
-            persons[nomerPersa].b2.Left = 230;
-            persons[nomerPersa].b2.Width = 50;
-            persons[nomerPersa].b2.Visible = true;
-            persons[nomerPersa].b2.Text = "Delete";
-            this.panel1.Controls.Add(persons[nomerPersa].b2);
-
             ToolTip tView = new ToolTip();
             tView.IsBalloon = true;
             tView.InitialDelay = 0;
@@ -146,13 +141,23 @@ namespace WindowsFormsApplication1
             tView.AutoPopDelay = 2000;
             tView.SetToolTip(persons[nomerPersa].b1, "View/edit person");
 
+            persons[nomerPersa].b2 = new Button();
+            persons[nomerPersa].b2.Top = yPersa;
+            persons[nomerPersa].b2.Left = 230;
+            persons[nomerPersa].b2.Width = 50;
+            persons[nomerPersa].b2.Visible = true;
+            persons[nomerPersa].b2.Text = "Del";
+            persons[nomerPersa].b2.Click +=
+                new System.EventHandler(this.label13_Click);
+            this.panel1.Controls.Add(persons[nomerPersa].b2);
+
             ToolTip tDelete = new ToolTip();
             tDelete.IsBalloon = true;
             tDelete.InitialDelay = 0;
             tDelete.ShowAlways = true;
             tDelete.AutoPopDelay = 2000;
             tDelete.SetToolTip(persons[nomerPersa].b2, "Delete this person");
-
+        
             persons[nomerPersa].coord = TextBoxWall1.Text;
             persons[nomerPersa].coord2 = TextBoxWall2.Text;
             persons[nomerPersa].nomer = nomerPersa;
@@ -160,9 +165,6 @@ namespace WindowsFormsApplication1
             nomerPersa++;
             yPersa = yPersa + 30;
             openSpace.Image = null;
-
-
-
         }
 
         private void circle_create_person(string filename, string name)
@@ -323,7 +325,27 @@ namespace WindowsFormsApplication1
 
         private void label1_Click(object sender, EventArgs e)
         {
+        }
 
+        private void label13_Click(object sender, EventArgs e)
+        {
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l1);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l2);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].l3);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].b1);
+            this.panel1.Controls.Remove(persons[nomerPersa - 1].b2);
+            nomerPersa--;
+            yPersa = yPersa - 30;
+        }
+
+        private void TextBoxWall1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            if (!(char.IsDigit(c) || c == '\b' || c == ' '))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
