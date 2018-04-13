@@ -15,7 +15,9 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "struct Person" +                 Environment.NewLine);
             File.AppendAllText(filename, "{" +                             Environment.NewLine);
             File.AppendAllText(filename, "    double x;" +                 Environment.NewLine);
+            File.AppendAllText(filename, "    double x2;" +                Environment.NewLine);
             File.AppendAllText(filename, "    double y;" +                 Environment.NewLine);
+            File.AppendAllText(filename, "    double y2;" +                Environment.NewLine);
             File.AppendAllText(filename, "    double angle;" +             Environment.NewLine);
             File.AppendAllText(filename, "    double nomer_kadra;" +       Environment.NewLine);
             File.AppendAllText(filename, "    HDC texture;" +              Environment.NewLine);

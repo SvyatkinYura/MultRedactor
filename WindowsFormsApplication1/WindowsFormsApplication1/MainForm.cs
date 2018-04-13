@@ -22,6 +22,11 @@ namespace WindowsFormsApplication1
             public int nomer;
             public String coord;
             public String coord2;
+            //Dobavit polya
+            public String x1;
+            public String y1;
+            public String x2;
+            public String y2;
             public String adress;
             public String time1;
             public String time2;
@@ -170,6 +175,20 @@ namespace WindowsFormsApplication1
                 persons[nomerPersa].moveside = ComboBoxMove.Text;
                 persons[nomerPersa].nomer = nomerPersa;
 
+                String[] coordinatyNachala = TextBoxWall1.Text.Split(new String[] { "," }, StringSplitOptions.None);
+                if (coordinatyNachala.Length > 1)
+                {
+                    persons[nomerPersa].x1 = coordinatyNachala[0];
+                    persons[nomerPersa].y1 = coordinatyNachala[1];
+                }
+
+                String[] coordinatyKonza = TextBoxWall2.Text.Split(new String[] { "," }, StringSplitOptions.None);
+                if (coordinatyKonza.Length > 1)
+                {
+                    persons[nomerPersa].x2 = coordinatyKonza[0];
+                    persons[nomerPersa].y2 = coordinatyKonza[1];
+                }
+
                 nomerPersa++;
                 yPersa = yPersa + 30;
                 openSpace.Image = null;
@@ -183,28 +202,46 @@ namespace WindowsFormsApplication1
                 persons[pNomer].sprite = SpriteNumberTextBox.Text;
                 persons[pNomer].moveside = ComboBoxMove.Text;
                 persons[pNomer].nomer = pNomer;
+
+                String[] coordinatyNachala = TextBoxWall1.Text.Split(new String[] { "," }, StringSplitOptions.None);
+                if (coordinatyNachala.Length > 1)
+                {
+                    persons[pNomer].x1 = coordinatyNachala[0];
+                    persons[pNomer].y1 = coordinatyNachala[1];
+                }
+                String[] coordinatyKonza = TextBoxWall2.Text.Split(new String[] { "," }, StringSplitOptions.None);
+                if (coordinatyKonza.Length > 1)
+                {
+                    persons[pNomer].x2 = coordinatyKonza[0];
+                    persons[pNomer].y2 = coordinatyKonza[1];
+                }
+
             }
 
-            String[] arr = TextBoxWall1.Text.Split(new String[] { " " }, StringSplitOptions.None);
-            //MessageBox.Show(arr[0]);
+            //sohranit v massiv
+            //proverit, chto est arr[1]
         }
 
         private void circle_create_person(string filename, string name)
         { 
            File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
+           File.AppendAllText(filename, "    double per.textureX = 50;"+                                   Environment.NewLine);
            File.AppendAllText(filename, "    double textureY = 50;"+                                   Environment.NewLine);
            File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
            File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
         }
 
-        private void old_place(string filename, string name)
+        private void old_place(string filename, string name, Person p)
         {
-            File.AppendAllText(filename, "  " + name + ".x = " + TextBoxWall1.Text + "; " + Environment.NewLine);
-            File.AppendAllText(filename, "   " + name + ".y = " + TextBoxWall1.Text + "; " + Environment.NewLine);
+            //ctrl-c ctrl-v texture n_sprites x2 y2
+            File.AppendAllText(filename, "    Person " + name + ";" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "   " + name + ".x = " + p.x1 + "; " + Environment.NewLine);
+            File.AppendAllText(filename, "   " + name + ".y = " + p.y1 + "; " + Environment.NewLine);
             File.AppendAllText(filename, "   " + name + ".nomer_kadra = 0; " + Environment.NewLine);
+            File.AppendAllText(filename, "   " + name + ".texture = txLoadImage(\"Pictures\\\\" + Path.GetFileName(p.adress) + "\"); " + Environment.NewLine);
             File.AppendAllText(filename, " " + name + ".gr_dvigx = 1000; " + Environment.NewLine);
         }
 
@@ -218,7 +255,6 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "            " + name + ".nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
-            File.AppendAllText(filename, "    }" + Environment.NewLine);
         }
 
         private void circle(string filename, string name)
@@ -278,8 +314,7 @@ namespace WindowsFormsApplication1
 
                 if (ComboBoxMove.Text == "Прямо")
                 {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place(filename, "per");
+                    old_place(filename, "per", persons[nomerPersa-1]);
                     Files.OpenWhile(filename);
                     go_pryamo(filename, "per");
                     close_while(filename);
@@ -304,7 +339,7 @@ namespace WindowsFormsApplication1
                 else if (ComboBoxMove.Text == "Диагонально")
                 {
                     Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place(filename, "per");
+                    old_place(filename, "per", persons[nomerPersa - 1]);
                     Files.OpenWhile(filename);
                     go_pryamo(filename, "per");
                     close_while(filename);
@@ -348,6 +383,11 @@ namespace WindowsFormsApplication1
                     {
                         openSpace.Image = null;
                     }
+
+                    MessageBox.Show(persons[nomer].x1);
+                    MessageBox.Show(persons[nomer].y1);
+                    MessageBox.Show(persons[nomer].x2);
+                    MessageBox.Show(persons[nomer].y2);
                 }
             }
         }
@@ -375,10 +415,20 @@ namespace WindowsFormsApplication1
         {
             char c = e.KeyChar;
 
-            if (!(char.IsDigit(c) || c == '\b' || c == ' '))
+            if (!(char.IsDigit(c) || c == '\b' || c == ','))
             {
                 e.Handled = true;
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBoxWall2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
