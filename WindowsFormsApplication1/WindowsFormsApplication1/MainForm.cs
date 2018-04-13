@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1
         {
             File.AppendAllText(filename, Environment.NewLine);
             
-            for (int n1 = 0; n1 <= 5; n1++)
+            for (int n1 = 0; n1 < nomer; n1++)
             {
                 File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
             }
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
         {
             File.AppendAllText(filename,                                                                Environment.NewLine);
             File.AppendAllText(filename, "    txDeleteDC(per.texture);" +                               Environment.NewLine);
-        }
+        }        
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
@@ -189,15 +189,17 @@ namespace WindowsFormsApplication1
             //MessageBox.Show(arr[0]);
         }
 
-        private void circle_create_person(string filename, string name)
-        { 
-           File.AppendAllText(filename, "   HDC texture = txLoadImage(\"Pictures\\Personaj.bmp);" +    Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "    double textureX = 50;"+                                   Environment.NewLine);
-           File.AppendAllText(filename, "    double textureY = 50;"+                                   Environment.NewLine);
-           File.AppendAllText(filename, "    double angle = 0;"+                                       Environment.NewLine);
-           File.AppendAllText(filename, "    double nomer_kadra = 0;"+                                 Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
+        private void circle_create_person(string filename, string name, Person p)
+        {
+            File.AppendAllText(filename, "    Person " + name + ";" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".texture = txLoadImage(\"Pictures\\\\Personaj.bmp\");" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".x = 50;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".y = 50;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".angle = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
         }
 
         private void old_place(string filename, string name)
@@ -218,30 +220,22 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "            " + name + ".nomer_kadra = 0;" + Environment.NewLine);
             File.AppendAllText(filename, "        }" + Environment.NewLine);
             File.AppendAllText(filename, Environment.NewLine);
-            File.AppendAllText(filename, "    }" + Environment.NewLine);
         }
 
         private void circle(string filename, string name)
         {
-           File.AppendAllText(filename, "        angle++;"+                                            Environment.NewLine);
-           File.AppendAllText(filename, "        textureX = 500 + 200 * cos (angle / 10);"+            Environment.NewLine);
-           File.AppendAllText(filename, "        textureY = 300 + 200 * sin (angle / 10);"+            Environment.NewLine);
-           File.AppendAllText(filename, "        txTransparentBlt(txDC(), textureX, textureY, 55, 86, texture, 55 * nomer_kadra, 0, RGB(0, 255, 255));"+ Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".angle++" +                                            Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".x = 500 + 200 * cos (" + name + ".angle / 10);" +            Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".y = 300 + 200 * sin (" + name + ".angle / 10);" +            Environment.NewLine);
+           File.AppendAllText(filename, "        txTransparentBlt(txDC(), " + name + ".x, " + name + ".x, 55, 86, " + name + ".texture, 55 * " + name + ".nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "        nomer_kadra++;"+                                      Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".nomer_kadra++;" +                                      Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "        if (nomer_kadra > 2)"+                                Environment.NewLine);
+           File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > 2)" +                                Environment.NewLine);
            File.AppendAllText(filename, "        {"+                                                 Environment.NewLine);
-           File.AppendAllText(filename, "           nomer_kadra = 0;"+                                 Environment.NewLine);
+           File.AppendAllText(filename, "           " + name + ".nomer_kadra = 0;" +                                 Environment.NewLine);
            File.AppendAllText(filename, "        }"+                                                 Environment.NewLine);
            File.AppendAllText(filename,                                                                Environment.NewLine); 
-           File.AppendAllText(filename, "        txSleep(10);"+                                        Environment.NewLine);
-           File.AppendAllText(filename, "     }"+                                                      Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "txDeleteDC(texture);"+                                        Environment.NewLine);
-           File.AppendAllText(filename,                                                                Environment.NewLine);
-           File.AppendAllText(filename, "return 0;"+                                                   Environment.NewLine);
-           File.AppendAllText(filename, "}"+                                                           Environment.NewLine);
         }
 
         private void OpenAddCharClick(object sender, EventArgs e)
@@ -273,45 +267,6 @@ namespace WindowsFormsApplication1
             {
                 string filename = saveFileDialog1.FileName;
 
-                Files.CreateStruct(filename);
-                open_main(filename);
-
-                if (ComboBoxMove.Text == "Прямо")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place(filename, "per");
-                    Files.OpenWhile(filename);
-                    go_pryamo(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Волнами")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    Files.OpenWhile(filename);
-                    Sinus.MovePerson(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Кругами")
-                {
-                    circle_create_person(filename, "per");
-                    Files.OpenWhile(filename);
-                    circle(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Диагонально")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place(filename, "per");
-                    Files.OpenWhile(filename);
-                    go_pryamo(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-
-                Files.Ending(filename);
 
                 //Add TXLib and pics
                 File.Copy(Path.Combine(Application.StartupPath, "TXLib.h"), filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
@@ -320,8 +275,60 @@ namespace WindowsFormsApplication1
                 {
                     Directory.CreateDirectory(adres_papki);
                 }
-                File.Copy(Path.Combine(Application.StartupPath, "kartinka.bmp"), adres_papki + "\\Personaj.bmp", true);
 
+                Files.CreateStruct(filename);
+                open_main(filename);
+
+                for (int nomer = 0; nomer < nomerPersa; nomer++)
+                {
+                    File.Copy(persons[nomer].adress, adres_papki + "\\" + Path.GetFileName(persons[nomer].adress), true);
+
+                    if (persons[nomer].moveside == "Прямо")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                        old_place(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Волнами")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                    }
+                    else if (persons[nomer].moveside == "Кругами")
+                    {
+                        circle_create_person(filename, PersonName(nomer), persons[nomer]);
+                    }
+                    else if (persons[nomer].moveside == "Диагонально")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                        old_place(filename, PersonName(nomer));
+                    }
+                }
+
+                Files.OpenWhile(filename);
+
+                for (int nomer = 0; nomer < nomerPersa; nomer++)
+                {
+                    if (persons[nomer].moveside == "Прямо")
+                    {
+                        go_pryamo(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Волнами")
+                    {
+                        Sinus.MovePerson(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Кругами")
+                    {
+                        circle(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Диагонально")
+                    {
+                        go_pryamo(filename, PersonName(nomer));
+                    }
+                }
+
+                close_while(filename);
+                delete_pics2(filename, nomerPersa);
+                Files.Ending(filename);
+                
                 MessageBox.Show("Successfully");
             }
         }

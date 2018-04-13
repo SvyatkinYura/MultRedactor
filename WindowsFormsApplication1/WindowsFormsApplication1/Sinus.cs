@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "    " + name + ".x = " + xBeg + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".y = " + xBeg + ";" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".nomer_kadra = 0;" + Environment.NewLine);
-            File.AppendAllText(filename, "    " + name + ".nach_dv = per.y;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".nach_dv = " + name + ".y;" + Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".ampl_y = 150;" +    Environment.NewLine);
             File.AppendAllText(filename, "    " + name + ".ampl_x = 10;" +     Environment.NewLine); 
         }
