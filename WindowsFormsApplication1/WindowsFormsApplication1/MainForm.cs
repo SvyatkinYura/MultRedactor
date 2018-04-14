@@ -68,7 +68,7 @@ namespace WindowsFormsApplication1
         {
             File.AppendAllText(filename, Environment.NewLine);
             
-            for (int n1 = 0; n1 <= 5; n1++)
+            for (int n1 = 0; n1 < nomer; n1++)
             {
                 File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
             }
@@ -104,7 +104,7 @@ namespace WindowsFormsApplication1
         {
             File.AppendAllText(filename,                                                                Environment.NewLine);
             File.AppendAllText(filename, "    txDeleteDC(per.texture);" +                               Environment.NewLine);
-        }
+        }        
 
         private void SaveCharButtonClick(object sender, EventArgs e)
         {
@@ -223,6 +223,18 @@ namespace WindowsFormsApplication1
                 persons[pNomer].l2.Text = charNameBox.Text;
             }
 
+        private void circle_create_person(string filename, string name, Person p)
+        {
+            File.AppendAllText(filename, "    Person " + name + ";" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".texture = txLoadImage(\"Pictures\\\\Personaj.bmp\");" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".x = 50;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".y = 50;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".angle = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, "    " + name + ".nomer_kadra = 0;" + Environment.NewLine);
+            File.AppendAllText(filename, Environment.NewLine);
+
             //sohranit v massiv
             //proverit, chto est arr[1]
         }
@@ -251,6 +263,21 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, Environment.NewLine);
         }
 
+        private void circle(string filename, string name)
+        {
+           File.AppendAllText(filename, "        " + name + ".angle++" +                                            Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".x = 500 + 200 * cos (" + name + ".angle / 10);" +            Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".y = 300 + 200 * sin (" + name + ".angle / 10);" +            Environment.NewLine);
+           File.AppendAllText(filename, "        txTransparentBlt(txDC(), " + name + ".x, " + name + ".x, 55, 86, " + name + ".texture, 55 * " + name + ".nomer_kadra, 0, RGB(0, 255, 255));" + Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        " + name + ".nomer_kadra++;" +                                      Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine);
+           File.AppendAllText(filename, "        if (" + name + ".nomer_kadra > 2)" +                                Environment.NewLine);
+           File.AppendAllText(filename, "        {"+                                                 Environment.NewLine);
+           File.AppendAllText(filename, "           " + name + ".nomer_kadra = 0;" +                                 Environment.NewLine);
+           File.AppendAllText(filename, "        }"+                                                 Environment.NewLine);
+           File.AppendAllText(filename,                                                                Environment.NewLine); 
+        }
 
         private void OpenAddCharClick(object sender, EventArgs e)
         {
@@ -281,45 +308,6 @@ namespace WindowsFormsApplication1
             {
                 string filename = saveFileDialog1.FileName;
 
-                Files.CreateStruct(filename);
-                open_main(filename);
-
-                if (ComboBoxMove.Text == "Прямо")
-                {
-                    old_place(filename, "per", persons[nomerPersa-1]);
-                    Files.OpenWhile(filename);
-                    go_pryamo(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Волнами")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    Files.OpenWhile(filename);
-                    Sinus.MovePerson(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Кругами")
-                {
-                    Circle.CreatePerson(filename, "per");
-                    Files.OpenWhile(filename);
-                    Circle.circle(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-                else if (ComboBoxMove.Text == "Диагонально")
-                {
-                    Sinus.CreatePerson(filename, "per", TextBoxWall1.Text);
-                    old_place(filename, "per", persons[nomerPersa - 1]);
-                    Files.OpenWhile(filename);
-                    go_pryamo(filename, "per");
-                    close_while(filename);
-                    delete_pics(filename);
-                }
-
-                Files.Ending(filename);
-
                 //Add TXLib and pics
                 File.Copy(Path.Combine(Application.StartupPath, "TXLib.h"), filename.Replace(Path.GetFileName(filename), "TXLib.h"), true);
                 string adres_papki = filename.Replace(Path.GetFileName(filename), "Pictures");
@@ -327,8 +315,60 @@ namespace WindowsFormsApplication1
                 {
                     Directory.CreateDirectory(adres_papki);
                 }
-                File.Copy(Path.Combine(Application.StartupPath, "kartinka.bmp"), adres_papki + "\\Personaj.bmp", true);
 
+                Files.CreateStruct(filename);
+                open_main(filename);
+
+                for (int nomer = 0; nomer < nomerPersa; nomer++)
+                {
+                    File.Copy(persons[nomer].adress, adres_papki + "\\" + Path.GetFileName(persons[nomer].adress), true);
+
+                    if (persons[nomer].moveside == "Прямо")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                        old_place(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Волнами")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                    }
+                    else if (persons[nomer].moveside == "Кругами")
+                    {
+                        circle_create_person(filename, PersonName(nomer), persons[nomer]);
+                    }
+                    else if (persons[nomer].moveside == "Диагонально")
+                    {
+                        Sinus.CreatePerson(filename, PersonName(nomer), persons[nomer].coord);
+                        old_place(filename, PersonName(nomer));
+                    }
+                }
+
+                Files.OpenWhile(filename);
+
+                for (int nomer = 0; nomer < nomerPersa; nomer++)
+                {
+                    if (persons[nomer].moveside == "Прямо")
+                    {
+                        go_pryamo(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Волнами")
+                    {
+                        Sinus.MovePerson(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Кругами")
+                    {
+                        circle(filename, PersonName(nomer));
+                    }
+                    else if (persons[nomer].moveside == "Диагонально")
+                    {
+                        go_pryamo(filename, PersonName(nomer));
+                    }
+                }
+
+                close_while(filename);
+                delete_pics2(filename, nomerPersa);
+                Files.Ending(filename);
+                
                 MessageBox.Show("Successfully");
             }
         }
