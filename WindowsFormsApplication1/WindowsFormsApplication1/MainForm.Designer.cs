@@ -42,6 +42,8 @@ namespace WindowsFormsApplication1
             this.panel2 = new System.Windows.Forms.Panel();
             this.SaveCharButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.charNameBox = new System.Windows.Forms.TextBox();
+            this.charNameLabel = new System.Windows.Forms.Label();
             this.openSpace = new System.Windows.Forms.PictureBox();
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
@@ -201,6 +203,8 @@ namespace WindowsFormsApplication1
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.charNameBox);
+            this.panel3.Controls.Add(this.charNameLabel);
             this.panel3.Controls.Add(this.openSpace);
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
@@ -222,6 +226,22 @@ namespace WindowsFormsApplication1
             this.panel3.Size = new System.Drawing.Size(377, 324);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
+            // 
+            // charNameBox
+            // 
+            this.charNameBox.Location = new System.Drawing.Point(85, 115);
+            this.charNameBox.Name = "charNameBox";
+            this.charNameBox.Size = new System.Drawing.Size(138, 20);
+            this.charNameBox.TabIndex = 19;
+            // 
+            // charNameLabel
+            // 
+            this.charNameLabel.AutoSize = true;
+            this.charNameLabel.Location = new System.Drawing.Point(19, 115);
+            this.charNameLabel.Name = "charNameLabel";
+            this.charNameLabel.Size = new System.Drawing.Size(60, 13);
+            this.charNameLabel.TabIndex = 18;
+            this.charNameLabel.Text = "Название:";
             // 
             // openSpace
             // 
@@ -440,5 +460,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox openSpace;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox charNameBox;
+        private System.Windows.Forms.Label charNameLabel;
     }
 }
