@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
             this.LabelName = new System.Windows.Forms.Label();
             this.nazvanieTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.PictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.LabelBackground = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@ namespace WindowsFormsApplication1
             this.panel2 = new System.Windows.Forms.Panel();
             this.SaveCharButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.charNameBox = new System.Windows.Forms.TextBox();
+            this.charNameLabel = new System.Windows.Forms.Label();
             this.openSpace = new System.Windows.Forms.PictureBox();
             this.SpriteNumberLabel = new System.Windows.Forms.Label();
             this.SpriteNumberTextBox = new System.Windows.Forms.TextBox();
@@ -60,7 +63,6 @@ namespace WindowsFormsApplication1
             this.ButtonAddChar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).BeginInit();
             this.panel2.SuspendLayout();
@@ -119,6 +121,16 @@ namespace WindowsFormsApplication1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 380);
             this.panel1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 274);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(259, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "number    name         state             view             delete";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label13
             // 
@@ -191,6 +203,8 @@ namespace WindowsFormsApplication1
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.charNameBox);
+            this.panel3.Controls.Add(this.charNameLabel);
             this.panel3.Controls.Add(this.openSpace);
             this.panel3.Controls.Add(this.SpriteNumberLabel);
             this.panel3.Controls.Add(this.SpriteNumberTextBox);
@@ -212,6 +226,22 @@ namespace WindowsFormsApplication1
             this.panel3.Size = new System.Drawing.Size(377, 324);
             this.panel3.TabIndex = 2;
             this.panel3.Visible = false;
+            // 
+            // charNameBox
+            // 
+            this.charNameBox.Location = new System.Drawing.Point(85, 115);
+            this.charNameBox.Name = "charNameBox";
+            this.charNameBox.Size = new System.Drawing.Size(138, 20);
+            this.charNameBox.TabIndex = 19;
+            // 
+            // charNameLabel
+            // 
+            this.charNameLabel.AutoSize = true;
+            this.charNameLabel.Location = new System.Drawing.Point(19, 115);
+            this.charNameLabel.Name = "charNameLabel";
+            this.charNameLabel.Size = new System.Drawing.Size(60, 13);
+            this.charNameLabel.TabIndex = 18;
+            this.charNameLabel.Text = "Название:";
             // 
             // openSpace
             // 
@@ -312,6 +342,7 @@ namespace WindowsFormsApplication1
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
+            this.TextBoxWall2.TextChanged += new System.EventHandler(this.TextBoxWall2_TextChanged);
             this.TextBoxWall2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // TextBoxWall1
@@ -371,16 +402,6 @@ namespace WindowsFormsApplication1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 274);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "number    name         state             view             delete";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +413,7 @@ namespace WindowsFormsApplication1
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
             this.Text = "Свойства персонажа";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).EndInit();
@@ -438,5 +460,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox openSpace;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox charNameBox;
+        private System.Windows.Forms.Label charNameLabel;
     }
 }
