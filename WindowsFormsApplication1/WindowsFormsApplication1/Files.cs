@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -35,6 +36,22 @@ namespace WindowsFormsApplication1
             File.AppendAllText(filename, "    double Time;" +              Environment.NewLine);
             File.AppendAllText(filename, "};" +                            Environment.NewLine);
             File.AppendAllText(filename,                                   Environment.NewLine);
+        }
+
+        public static void OpenMain(string filename, PictureBox PictureBoxBackground)
+        {
+            File.AppendAllText(filename, "int main()" + Environment.NewLine);
+            File.AppendAllText(filename, "{" + Environment.NewLine);
+            File.AppendAllText(filename, "    txCreateWindow(" +
+                PictureBoxBackground.Image.Width.ToString() + ", " +
+                PictureBoxBackground.Image.Height.ToString() + ");" + Environment.NewLine);
+        }
+
+        public static void CloseWhile(string filename)
+        {
+            File.AppendAllText(filename, Environment.NewLine);
+            File.AppendAllText(filename, "        txSleep(10);" + Environment.NewLine);
+            File.AppendAllText(filename, "    }" + Environment.NewLine);
         }
 
         public static void OpenWhile(string filename)

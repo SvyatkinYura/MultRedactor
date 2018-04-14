@@ -130,7 +130,6 @@ namespace WindowsFormsApplication1
             this.label1.Size = new System.Drawing.Size(259, 13);
             this.label1.TabIndex = 24;
             this.label1.Text = "number    name         state             view             delete";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label13
             // 
@@ -158,7 +157,6 @@ namespace WindowsFormsApplication1
             this.LabelBackground.Size = new System.Drawing.Size(77, 13);
             this.LabelBackground.TabIndex = 11;
             this.LabelBackground.Text = "Выбрать фон:";
-            this.LabelBackground.Click += new System.EventHandler(this.LabelBackground_Click);
             // 
             // dobavitFonButton
             // 
@@ -342,7 +340,6 @@ namespace WindowsFormsApplication1
             this.TextBoxWall2.Name = "TextBoxWall2";
             this.TextBoxWall2.Size = new System.Drawing.Size(100, 20);
             this.TextBoxWall2.TabIndex = 3;
-            this.TextBoxWall2.TextChanged += new System.EventHandler(this.TextBoxWall2_TextChanged);
             this.TextBoxWall2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxWall1_KeyPress);
             // 
             // TextBoxWall1
@@ -413,7 +410,6 @@ namespace WindowsFormsApplication1
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
             this.Text = "Свойства персонажа";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxBackground)).EndInit();
